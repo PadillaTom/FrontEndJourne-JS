@@ -37,5 +37,9 @@
 // Let --> Recomendable usarlo para todo.
 // Var --> Solo se usa en E6.
 // La mayoria de programadores usa Const y luego modifica valores. Muy pocas veces usan Let.
+
+//  :::::::::::::: Quotation Marks "" or ''
+//
+//
 //
 //
