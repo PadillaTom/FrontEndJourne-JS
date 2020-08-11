@@ -94,17 +94,37 @@
 // const sobran = pizzaSlices % children;
 // console.log(sobran);
 
-//  :::::::::::::: Type Conversion
-//
-//
-//
-//
+//  :::::::::::::: Implicit Type Conversion
+// let number3 = '10';
+// let number4 = '20';
+// const result = number3 + number4;
+// console.log(result);
+// This just Concatenate the Strings
+// const result2 = number3 - number4;
+// console.log(result2);
+// JS knows i am treating these as numbers , it converrts the STR to INTEGER.
+// STR + INT = CONCAT
 
 //  :::::::::::::: Data Types
+// Primitives --> Str, Nums, Bool, Null, Undef, Symbol
+// Objects --> Arrays, Functions, Objects (dictionaries)
+// Typeof --> Shows which type is it.
 //
-//
-//
-//
+// // STRING:
+// let text = 'some text';
+// console.log(typeof text);
+// // NUMBER:
+// let nums = 25;
+// console.log(typeof nums);
+// // BOOLEAN:
+// let boolType = true;
+// console.log(typeof boolType);
+// // NULL: Returns Object but its NULL
+// const nullType = null;
+// console.log(typeof nullType);
+// // UNDEFINED: Not defined in variables
+// let undefType;
+// console.log(undefType);
 
 //  :::::::::::::: Arrays
 //
