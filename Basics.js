@@ -337,11 +337,11 @@ let dice = 4;
 //  :::::::::::::: Loops: FOR
 // Variable a modificar
 // For (Starting value, When to stop, Augment value)
-let i;
-for (i = 0; i < 10; i++) {
-  console.log('number is ' + i);
-}
+// let i;
+// for (i = 0; i < 10; i++) {
+//   console.log('number is ' + i);
+// }
 
-for (let number = 10; number >= 0; number--) {
-  console.log('Numbers:' + number);
-}
+// for (let number = 10; number >= 0; number--) {
+//   console.log('Numbers:' + number);
+// }
