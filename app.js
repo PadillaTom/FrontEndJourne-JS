@@ -224,43 +224,124 @@
 // console.log(person.siblings[2]); --> Buscamos dentro del array
 
 //  :::::::::::::: Conditional Statements
-//
-//
-//
-//
+// If the condition is met , se mete al loop, if not, continua.
+// TRUE or FALSE
+// value = 2 > 1;
+// console.log(typeof value);
+// if (value) {
+//   //--> Condition
+//   console.log('hellor world');
+//   //---> What happens
+// }
+// if (false) {
+//   console.log('hello TRUE');
+// } else {
+//   console.log('Hello FALSE');
+// }
 
 //  :::::::::::::: Equality
+// Podemos verificar con =
+// let num1 = 6;
+// let num2 = 6;
+// const result = num1 >= num2;
+// if (num1 > num2) {
+//   console.log('First wins');
+// } else if (result) {
+//   console.log('Empate');
+// } else {
+//   console.log('Second Wins');
+// }
 //
+// NOT TRUE -->  ! BEFORE --> Shows the opposite
+// let value = true;
+// if (!value) {
+//   console.log('is true');
+// } else {
+//   console.log('NOT true');
+// }
 //
-//
-//
+// == and ===
+// let num1 = 6;
+// let num2 = '6';
+// console.log(num1 == num2);   //--> True
+// console.log(num1 === num2);  // --> False
 
 //  :::::::::::::: Logial Operators
-//
-//
-//
-//
+// || OR   --> IF ONE IS TRUE: bool = TRUE
+// && AND  --> BOTH NEED TO BE TRUE: bool =TRUE
+// let name = 'Tom';
+// let age = 24;
+// if (name === 'bob' && age === 24) {
+//   console.log('Hello BOB');
+// } else {
+//   console.log('wrong values');
+// }
 
 //  :::::::::::::: Switch Statement
-//
-//
-//
-//
+// Another way to write IF ---> Muy usado en REDUX
+let dice = 4;
+
+// Long way... idem for 1 to 6
+// if (dice === 1) {
+//   console.log('It is One');
+// } else if (dice === 2) {
+//   console.log('It is Two');
+// }
+
+// Switch way:    ---> Se usa mucho en Redux
+// switch (dice) {
+//   case 1:
+//     console.log('One');
+//     break;
+//   case 2:
+//     console.log('Two');
+//     break;
+//   case 3:
+//     console.log('Three');
+//     break;
+//   case 4:
+//     console.log('Four');
+//     break;
+//   case 5:
+//     console.log('Five');
+//     break;
+//   case 6:
+//     console.log('Six');
+//     break;
+//   default:
+//     console.log('You did not roll the dice');
+// }
 
 //  :::::::::::::: Loops: WHILE
-//
-//
-//
-//
+// Ej: Si tengo dinero ( > 0) i am going to the mall
+// let amount = 10;
+// while (amount > 0) {
+//   console.log('I have ' + amount + " Let's buy something");
+//   amount--;
+// }
+// while (amount === 0) {
+//   console.log('Im POOR!');
+//   break;
+// }
+// SIN AMOUNT-- : NOS METEMOS EN UN LOOP INFINITO!
+// Podemos usar BREAK para forzar el stop!
 
 //  :::::::::::::: Loops: DO WHILE
-//
-//
-//
-//
+// let money = 15;
+// do {
+//   console.log('you have ' + money + ' Dollras');
+//   money++;
+// } while (money < 10);
+// El WHILE CORRE UNA VEZ SI O SI, impriminedo la expression de DO.
 
 //  :::::::::::::: Loops: FOR
-//
-//
-//
-//
+// Variable a modificar
+// For (Starting value, When to stop, Augment value)
+let i;
+for (i = 0; i < 10; i++) {
+  console.log('number is ' + i);
+}
+
+for (let number = 10; number >= 0; number--) {
+  console.log('Numbers:' + number);
+}
