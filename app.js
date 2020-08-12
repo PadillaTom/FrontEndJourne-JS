@@ -179,28 +179,49 @@
 //  :::::::::::::: Funct: Expressions
 // Is creating a variable then assigning the Function to that Variable.
 // NORMAL:
-function addValues(num1, num2) {
-  let sum = num1 + num2;
-  return sum;
-}
-const firstSum = addValues(5, 10);
-// console.log(firstSum);
-const secondSum = addValues(1, 4);
-// console.log(secondSum);
-// With EXPRESSIONS:
-const addFunc = function (num1, num2) {
-  return num1 + num2;
-};
-const thirdSum = addFunc(5, 20);
-// console.log(thirdSum);
+// function addValues(num1, num2) {
+//   let sum = num1 + num2;
+//   return sum;
+// }
+// const firstSum = addValues(5, 10);
+// // console.log(firstSum);
+// const secondSum = addValues(1, 4);
+// // console.log(secondSum);
+// //
+// // With EXPRESSIONS:
+// const addFunc = function (num1, num2) {
+//   return num1 + num2;
+// };
+// const thirdSum = addFunc(5, 20);
+// // console.log(thirdSum);
+// //
+// const allSums = [firstSum, secondSum, thirdSum, addFunc(10, 10)];
+// console.log(allSums);
+//
+// ARROW FUNCTIONS: Const multiply = (num1, num2) => num1*num2;
 
-const allSums = [firstSum, secondSum, thirdSum, addFunc(10, 10)];
-console.log(allSums);
 //  :::::::::::::: Objects
-//
-//
-//
-//
+// KEYS : VALUES  ---> Dictionary in Python.
+// const person = {
+//   name: 'Tom',
+//   lastName: 'Padilla',
+//   age: 30,
+//   education: false,
+//   married: true,
+//   siblings: ['anna', 'padi', 'rafa'],
+//   greetings: function () {
+//     console.log('Hello i am Tom');
+//   },
+//   //   Shortcut para functions since ES6
+//   greetings2() {
+//     console.log('my name is ES6');
+//   },
+// };
+// console.log(person);
+// // console.log(person.name); --> Buscamos el item
+// person.greetings(); --> Ejecutamos la function
+// person.greetings2(); --> Shortcut since ES6
+// console.log(person.siblings[2]); --> Buscamos dentro del array
 
 //  :::::::::::::: Conditional Statements
 //
