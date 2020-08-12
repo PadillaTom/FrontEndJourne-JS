@@ -127,35 +127,75 @@
 // console.log(undefType);
 
 //  :::::::::::::: Arrays
-//
-//
-//
-//
+// Lists in Python --> [] index 0 base
+// const friendsList = ['anna', 'tom', 'mati', 'pibe'];
+// console.log(friendsList);
+// const mynumberArray = [1, 5, 6, 2, 3];
+// console.log(mynumberArray);
+// // console.log(friendsList[1]); --> Index 1
+// let bestFriend = friendsList[3];
+// console.log(bestFriend);
+// friendsList[4] = 'Pibito'; --> Reasign value
+// console.log(friendsList[4]);
+// DevOps me los muestra separados por Index
 
 //  :::::::::::::: Functions
-//
-//
-//
-//
+// Write a code and re use that code piece.
+// function hello(name) {
+//   console.log('Hello there ' + name);
+// }
+// hello('Tom');
+// hello('Padi');
 
 //  :::::::::::::: Funct: Parameters and Arguments
-//
-//
-//
-//
+// Parameter --> When is  declared, defined: function hello (PARAMETER) {}
+// Argument --> When we invoke, call it: hello(ARGUMENT);
 
 //  :::::::::::::: Funct: Return
+// Ejemplo: 1 Inch = 2.54 cm
+// function calculate(value) {
+//   let newValue = value * 2.54;
+//   console.log('Value in CM is : ' + (value * 2.54 + ' cm.'));
+//   return newValue;
+// }
+// let wallHeight = 50;
+// const width = calculate(100);
+// const height = calculate(wallHeight);
 //
-//
-//
-//
+// const dimensions = [width, height];
+// console.log(dimensions);
+// --> Nos tira undefined  porque no declaramos un RETURN en la function. Solo un Console.log()
+//  Declaramos un RETURN: return "hello world"
+//  Declaramos una newValue dentro la function
+// Shortcut:
+// function calculate2(value) {
+//   return value * 2.54;  --> Shortcut Headers, PERO NO GUARDA EL VALUE GENERADO
+// }
+// const width = calculate2(100);
+// const height = calculate2(wallHeight);
+// const dimensions = [width, height];
+// console.log(dimensions);
 
 //  :::::::::::::: Funct: Expressions
-//
-//
-//
-//
+// Is creating a variable then assigning the Function to that Variable.
+// NORMAL:
+function addValues(num1, num2) {
+  let sum = num1 + num2;
+  return sum;
+}
+const firstSum = addValues(5, 10);
+// console.log(firstSum);
+const secondSum = addValues(1, 4);
+// console.log(secondSum);
+// With EXPRESSIONS:
+const addFunc = function (num1, num2) {
+  return num1 + num2;
+};
+const thirdSum = addFunc(5, 20);
+// console.log(thirdSum);
 
+const allSums = [firstSum, secondSum, thirdSum, addFunc(10, 10)];
+console.log(allSums);
 //  :::::::::::::: Objects
 //
 //
