@@ -248,6 +248,7 @@ const people = [
 //  -----> FOR EACH <-----
 // Does NOT return a new Array!
 // Nos pide una Call Back Function, puede ser creada como parametro o fuera.
+
 //Fuera:  Imprime cada dato de individual
 // function showPerson(individual) {
 //   //podemos pedir las key ".age , .job"
@@ -256,12 +257,14 @@ const people = [
 //   );
 // }
 // people.forEach(showPerson);
-// Inside:
-people.forEach(function (indiv) {
-  console.log(`${indiv.name} has ${indiv.age} and he is a ${indiv.job}`);
-});
 
-//  ::::::::::::::
+// Inside:
+// people.forEach(function (indiv) {
+//   console.log(`${indiv.name} has ${indiv.age} and he is a ${indiv.job}`);
+// });
+// Luego usaremos ARROW FUNCTIONS!!!!
+
+// -----> MAP <-----
 //
 //
 //
