@@ -265,30 +265,99 @@ const people = [
 // Luego usaremos ARROW FUNCTIONS!!!!
 
 // -----> MAP <-----
+// Returns a NEW ARRAY. Used a lot!
+// Does NOT change size of original array, uses values to make a new oen
+// const ages = people.map(function (singleAge) {
+//   return `Las edades son ${singleAge.age}`; // Itera sobre la Array!
+// });
+// console.log(ages);  Aqui iteramos cada item imprimiendolo
 //
+// const newPeople = people.map(function (individual) {
+//   return {
+//     firstName: individual.name,
+//     indivAge: individual.age,
+//     indivJob: individual.job,
+//   };
+// });
+// console.log(newPeople);
+// Aqui iteramos cada item, creando una nueva Array de objetos
 //
-//
-//
+// EJEMPLO VIDA REAL
+// Tomamos una key de un objeto, la pasamos a un HTML tag.
+// const namesToHtml = people.map(function (person) {
+//   return `<h1>${person.name}</h1> `;
+// });
+// console.log(namesToHtml);
+// document.body.innerHTML = namesToHtml.join(' ');
 
-//  ::::::::::::::
+// -----> Filter <-----
+// New Array, Manipulate the size of newArr, based on condition
+// EMPTY ARRAY = NO MATCH IN CONDITION.
+// const youngPeople = people.filter(function (person) {
+//   return person.age <= 25;
+// });
+// console.log(youngPeople);
 //
-//
-//
-//
+// const devPeople = people.filter(function (person) {
+//   return person.job === 'Designer';
+// });
+// console.log(devPeople);
 
-//  ::::::::::::::
-//
-//
-//
-//
+// -----> FIND <-----
+// Returns Single Instance = An Object
+// first match, Undef if no match,
+//Used for getting an unique value
+const people2 = [
+  { name: 'Bob', age: 20, job: 'Developer', id: 1 },
+  { name: 'Peter', age: 25, job: 'Designer', id: 2 },
+  { name: 'Peter2', age: 25, job: 'Designer', id: 2 }, // para mostrar que tira el primero unicamente
+  { name: 'Tom', age: 31, job: 'Front-End', id: 3 },
+];
+// const personByID = people2.find(function (person) {
+//   return person.id === 2;
+// });
+// console.log(personByID);
+// const names1 = ['tom', 'Katy', 'Perro', 'Gato'];
+// console.log(
+//   names1.find(function (name) {
+//     return name === 'Perro';
+//   })
+// );
+// :::: DIFERENCIA FILTER (array) VS FIND (object)
+// Filter:
+// const personFilter = people2.filter(function (person) {
+//   return person.id === 3;
+// });
+// console.log(personFilter); // Devuelve una array con el objeto dentro hay que acceder con un INDEX
+// console.log(personFilter[0].name); // Asi devuelve el name
+// // Find:
+// const personFind = people2.find(function (person) {
+//   return person.id === 3;
+// });
+// console.log(personFind.name); // Devuelve el objeto TOM.
 
-//  ::::::::::::::
-//
-//
-//
-//
-
-//  ::::::::::::::
+//  -----> REDUCE <-----
+// Iterates, CallBack Function
+// Reduces to a Single Value: Number, Array, Object
+// Pasamos 2 parametros:
+// ACC --> Acumulator: Total of all the calculations (Value we will return)
+// CURR --> Current: Current iteration / value.
+const people3 = [
+  { name: 'Bob', age: 20, job: 'Developer', id: 1, salary: 200 },
+  { name: 'Peter', age: 25, job: 'Designer', id: 2, salary: 300 },
+  { name: 'Peter2', age: 25, job: 'Designer', id: 2, salary: 400 }, // para mostrar que tira el primero unicamente
+  { name: 'Tom', age: 31, job: 'Front-End', id: 3, salary: 500 },
+];
+const totalSalary = people3.reduce(function (acc, currItem) {
+  console.log(`Total so far: ${acc}`);
+  console.log(
+    `Current Salary to pay: ${currItem.salary}. Employee: ${currItem.name}`
+  );
+  acc += currItem.salary;
+  return acc; // ALWAYS METERLO
+}, 0); //ESPECIFICA QUE VALUE TYPE NOS DA
+console.log(`Total a pagar en Salarios: ${totalSalary}`);
+//  :::::::::::::: Math Object
 //
 //
 //
