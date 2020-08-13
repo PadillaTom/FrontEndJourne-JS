@@ -213,34 +213,53 @@
 //If the Functions accepts another Function as an ARGUMENT
 //or RETURNS another Function
 // Ej: Hacemos el Saludo de manera mas ordenada y facil:
-function morning(nameCallBack) {
-  return `Good morning ${nameCallBack.toUpperCase()}`;
-}
-function lunch(nameCallBack) {
-  return `Good Lunch ${nameCallBack.repeat(2)}`;
-}
-function dinner(nameCallBack) {
-  return `Good Dinner ${nameCallBack}`;
-}
-function universalGreet(nameHigher, cb) {
-  // CB = Callback, funcion que invokaremos dentro de esta.
-  const myName = 'John';
-  console.log(`${cb(nameHigher)}, my name is ${myName}`);
-}
-universalGreet('Tom', morning); // NameHigher , Function (mroning)
-universalGreet('Katy', lunch);
-universalGreet('July', dinner);
-//  ::::::::::::::
-//
-//
-//
-//
+// function morning(nameCallBack) {
+//   return `Good morning ${nameCallBack.toUpperCase()}`;
+// }
+// function lunch(nameCallBack) {
+//   return `Good Lunch ${nameCallBack.repeat(2)}`;
+// }
+// function dinner(nameCallBack) {
+//   return `Good Dinner ${nameCallBack}`;
+// }
+// function universalGreet(nameHigher, cb) {
+//   // CB = Callback, funcion que invokaremos dentro de esta.
+//   const myName = 'John';
+//   console.log(`${cb(nameHigher)}, my name is ${myName}`);
+// }
+// universalGreet('Tom', morning); // NameHigher , Function (mroning)
+// universalGreet('Katy', lunch);
+// universalGreet('July', dinner);
+// Que hicimos? Una funcion de llamado (higher), pasamos dentro la CallBack con ciertos methods.
+// La gracia: Invocar la func dentro de otra.
 
-//  ::::::::::::::
-//
-//
-//
-//
+//  :::::::::::::: Array Methods !!!!!!!!!!!
+// Iteran automaticamente, no need for loops
+// Aceptan CallBack functions y se aplican para cada item, tambien podemos referenciar el item que querramos.
+// -----> forEach, map, filter, find, reduce. <-----
+
+//  ***** ARRAY GENERAL PARA TRABAJAR *****
+const people = [
+  { name: 'Bob', age: 20, job: 'Developer' },
+  { name: 'Peter', age: 25, job: 'Designer' },
+  { name: 'Tom', age: 31, job: 'Front-End' },
+];
+
+//  -----> FOR EACH <-----
+// Does NOT return a new Array!
+// Nos pide una Call Back Function, puede ser creada como parametro o fuera.
+//Fuera:  Imprime cada dato de individual
+// function showPerson(individual) {
+//   //podemos pedir las key ".age , .job"
+//   console.log(
+//     `${individual.name} has ${individual.age} and he is a ${individual.job}`;
+//   );
+// }
+// people.forEach(showPerson);
+// Inside:
+people.forEach(function (indiv) {
+  console.log(`${indiv.name} has ${indiv.age} and he is a ${indiv.job}`);
+});
 
 //  ::::::::::::::
 //
