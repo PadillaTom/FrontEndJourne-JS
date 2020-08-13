@@ -342,47 +342,76 @@ const people2 = [
 // Pasamos 2 parametros:
 // ACC --> Acumulator: Total of all the calculations (Value we will return)
 // CURR --> Current: Current iteration / value.
-const people3 = [
-  { name: 'Bob', age: 20, job: 'Developer', id: 1, salary: 200 },
-  { name: 'Peter', age: 25, job: 'Designer', id: 2, salary: 300 },
-  { name: 'Peter2', age: 25, job: 'Designer', id: 2, salary: 400 }, // para mostrar que tira el primero unicamente
-  { name: 'Tom', age: 31, job: 'Front-End', id: 3, salary: 500 },
-];
-const totalSalary = people3.reduce(function (acc, currItem) {
-  console.log(`Total so far: ${acc}`);
-  console.log(
-    `Current Salary to pay: ${currItem.salary}. Employee: ${currItem.name}`
-  );
-  acc += currItem.salary;
-  return acc; // ALWAYS METERLO
-}, 0); //ESPECIFICA QUE VALUE TYPE NOS DA
-console.log(`Total a pagar en Salarios: ${totalSalary}`);
+// const people3 = [
+//   { name: 'Bob', age: 20, job: 'Developer', id: 1, salary: 200 },
+//   { name: 'Peter', age: 25, job: 'Designer', id: 2, salary: 300 },
+//   { name: 'Peter2', age: 25, job: 'Designer', id: 2, salary: 400 }, // para mostrar que tira el primero unicamente
+//   { name: 'Tom', age: 31, job: 'Front-End', id: 3, salary: 500 },
+// ];
+// const totalSalary = people3.reduce(function (acc, currItem) {
+//   console.log(`Total so far: ${acc}`);
+//   console.log(
+//     `Current Salary to pay: ${currItem.salary}. Employee: ${currItem.name}`
+//   );
+//   acc += currItem.salary;
+//   return acc; // ALWAYS METERLO
+// }, 0); //ESPECIFICA QUE VALUE TYPE NOS DA y Initial Value!!
+// console.log(`Total a pagar en Salarios: ${totalSalary}`);
+
 //  :::::::::::::: Math Object
-//
-//
-//
-//
+// Built In Function!
+// const number = 4.56789;
+// const result = Math.floor(number); // Redondea Al Piso
+// const result = Math.ceil(number); // Redondea Arriba
+// const result = Math.sqrt(number); // Raiz Cuadrada
+// const result = Math.min(1, 2, 20, 15, 14, 18, 9, 100); // Numero Minimo de los pasados
+// const result = Math.max(1, 2, 20, 15, 14, 18, 9, 100); // Max
+// const result = Math.random(); // Never going to be 1
+// const result = Math.floor(Math.random() * 10 + 1); // 0-10 Rnadom
+// console.log(result);
 
-//  ::::::::::::::
-//
-//
-//
-//
+//  :::::::::::::: Date Object
+//Built In Function!
+// Creamos una var que contenga la func
+// Month nos tirará el NUMERO: (considerando January 0 )
+// const dateFunc = new Date();
+// console.log(dateFunc);
 
-//  ::::::::::::::
-//
-//
-//
-//
+// const actualMonth = dateFunc.getMonth();
+// const months = [
+//   'Enero',
+//   'Febrero',
+//   'Marzo',
+//   'Abril',
+//   'Mayo',
+//   'Junio',
+//   'Julio',
+//   'Agosto',
+//   'Septiembre',
+//   'Octubre',
+//   'Noviembre',
+//   'Diciembre',
+// ];
+// console.log(months[actualMonth]);
 
-//  ::::::::::::::
-//
-//
-//
-//
+// const actualDay = dateFunc.getDay();
+// const days = [
+//   'Domingo',
+//   'Lunes',
+//   'Martes',
+//   'Miercoles',
+//   'Jueves',
+//   'Viernes',
+//   'Sabado',
+// ];
+// console.log(days[actualDay]);
+// console.log(dateFunc.getDate());
+// console.log(dateFunc.getFullYear());
 
-//  ::::::::::::::
-//
-//
-//
-//
+// // Construimos algo:
+// const sentence = `${days[actualDay]} ${dateFunc.getDate()} de ${
+//   months[actualMonth]
+// }, de ${dateFunc.getFullYear()} `;
+// console.log(sentence);
+
+// TERMINADO TUTORIAL CONTINUED
