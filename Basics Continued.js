@@ -1,4 +1,5 @@
 //  :::::::::::::: String Properties and Methods
+//
 // Don't learn all methods. Search them in Google
 // let text = 'Tomas Padilla';
 // -----> LENGTH <-----
@@ -36,6 +37,7 @@
 // console.log(text2.slice(-7)); //From last -7.
 
 //  :::::::::::::: Template Literals
+//
 // We use BACKTICK Characters
 // Perform Operations: ${}
 // No need to escape
@@ -45,6 +47,7 @@
 // console.log(string);
 
 //  :::::::::::::: Arrays Prop and Methods
+//
 // let namesList = ['tom', 'katy', 'july'];
 // // -----> LENGTH <-----
 // console.log(namesList.length);
@@ -81,46 +84,152 @@
 
 //  :::::::::::::: Value vs References
 //
+//  -----> Primite data type value = str, int, etc
+//  When changing REFERENCE VALUE, se cambia para todos ( el caso del dictionario)
+//  -----> Reference : Usado por objectos (dictionary)
+// const number = 1;
+// let number2 = number;
+// number2 = 7;
+// console.log(`first value is ${number}`);
+// console.log(`first value is ${number2}`);
 //
-//
-//
+// un cambio de reference se aplica a todos
+// let person = { name: 'bob' };
+// // let person2 = person;
+// // person2.name = 'susy'; // aqui el cambio del value de NAME.
+// console.log(`the name of person is ${person.name}`);
+// // console.log(`the name of person is ${person2.name}`);
+// // SOLUCION: "just get me the copy of person":
+// let person2 = { ...person };
+// person2.name = 'susy';
+// console.log(`the name of person is ${person2.name}`);
 
-//  ::::::::::::::
+//  :::::::::::::: Null vs Undefined
 //
-//
-//
-//
+// -----> NULL :  Set by the developer
+// -----> UNDEFINED : JS says i cannot find a value
+// let number = 20 + null; // 20 + 0
+// console.log(number);
+// let number2 = 20 + undefined;
+// console.log(number2); // Not a number (NaN)
 
-//  ::::::::::::::
+//  :::::::::::::: Truthy and Falsy
 //
-//
-//
-//
+// ----->  FALSE <------
+// " ", Nan, false, null, undefined.
+// const text = 'Tom';
+// const text2 = '';
+// if (text) {    // String = True
+//   console.log('value is Truthy');
+// } else {
+//   console.log('value is Falsy');
+// }
+// if (text2) { // Empty = False
+//   console.log('value is Truthy');
+// } else {
+//   console.log('value is Falsy');
+// }
 
-//  ::::::::::::::
-//
-//
-//
-//
+//  :::::::::::::: Ternary Operator
+// -----> Unary <-----
+// let text = 'Some Text';
+// console.log(typeof text); // Operand
+// -----> Binary <------
+// let number = 3;
+// let number2 = 2 + 5;
+// console.log(typeof number, typeof number2); // Operator, Assignment
+//-----> Ternary<------
+// Condition ? (runs if true) : (runs if false)
+// Normally :
+// const value = 2 < 1;
+// if (value) {
+//   console.log('true');
+// } else {
+//   console.log('false');
+// }
+//  -----> Ternary way :
+// value ? console.log('True') : console.log('False');
 
-//  ::::::::::::::
-//
-//
-//
-//
+//  :::::::::::::: Global and Local Scope
+// -----> Global: Any var outside the code block {}
+// Digamos que tenemos 15 names... se complica poner nombre a tantas variables name1,2,3....
+// let name = 'Bobo';
+// name = 'Peter';
+// function calculate() {
+//   //some code
+//   console.log(name);
+//   name = 'orange';
+// }
+// calculate();
+// if (true) {
+//   console.log(name);
+//   name = 'pants';
+// }
+// console.log(`My name is ${name}`);
+// !!!!!!!!!! PROBLEMATICA:
+// PISAMOS LOS NAMES, IMPRIME TODO MEZCLADO.
+//ATENCION A PEQUEÑOS ERRORES DE TYPEO. !!!!!!!!!
+// -----> Local: Inside the block {}, CANNOT ACCES OUTSIDE
+// NO APLICABLE A VAR (usar LET)
+// function calculate() {
+//   const name = 'john';
+//   console.log(name);
+//   const age = 50;
+//   becomesGlobal = 'No Const, Let = Becomes Global, when function is invoked';
+// }
+// calculate();
+// console.log(becomesGlobal);
+// console.log(name);
+// console.log(age); // NOT DEFINED: porque fue creada locally
 
-//  ::::::::::::::
-//
-//
-//
-//
+//  :::::::::::::: Variable Lookup
+// Pasos que hace JS: 1) Busca local dentro para fuera, 2) Busca Global
+// const globalNumber = 5;
+// function add(num1, num2) {
+//   const globalNumber = 15; // Toma primero la Local
+//   const result = num1 + num2 + globalNumber;
+//   function multiply() {
+//     const multiplyResult = result * globalNumber;
+//     console.log(multiplyResult); //20 * 15 (local in function1)
+//   }
+//   multiply();
+//   return result;
+// }
+// console.log(add(2, 3));
 
-//  ::::::::::::::
-//
-//
-//
-//
+//  :::::::::::::: Callback Functions, Higher Order Functions
+// Functions are First Class Objects - We can Store them in Variables, We can pass them as an argument of another functions, we can Return from the function (closure);
+// -----> CALLBACK <-----
+// Function beings passed to another function as an Argument
+// Ej: Saludamos al invocador  mañana, tarde, noche...
+// function greetMorning(name) {
+//   const myName = 'John';
+//   console.log(`Good morning ${name}, my name is ${myName}`);
+// }
+// greetMorning('Tom');
+// Deberiamos copy paste 3 veces, repetir mucho. Ademas modificar codigo para hacerlo compatible!
 
+// -----> HIGHER ORDER <-----
+//If the Functions accepts another Function as an ARGUMENT
+//or RETURNS another Function
+// Ej: Hacemos el Saludo de manera mas ordenada y facil:
+function morning(nameCallBack) {
+  return `Good morning ${nameCallBack.toUpperCase()}`;
+}
+function lunch(nameCallBack) {
+  return `Good Lunch ${nameCallBack.repeat(2)}`;
+}
+function dinner(nameCallBack) {
+  return `Good Dinner ${nameCallBack}`;
+}
+function universalGreet(nameHigher, cb) {
+  // CB = Callback, funcion que invokaremos dentro de esta.
+  const myName = 'John';
+  console.log(`${cb(nameHigher)}, my name is ${myName}`);
+}
+universalGreet('Tom', morning); // NameHigher , Function (mroning)
+universalGreet('Katy', lunch);
+universalGreet('July', dinner);
 //  ::::::::::::::
 //
 //
