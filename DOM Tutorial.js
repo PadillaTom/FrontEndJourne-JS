@@ -253,31 +253,106 @@
 //prepend by default los pone ARRIBA DE TODO
 
 // ::::: Remove - RemoveChild  :::::
+// Remove elements of the DOM, They are still in HTML, but not visibles
+// const result = document.querySelector('#result');
+// result.remove(); // Sacamos el DIV que contiene Second Heading
+// RemoveChild : Seleccionamos la Parent.query(elemento)
+// const heading = result.querySelector('h1');
+// console.log(heading);
+// result.removeChild(heading);
+
+// :::::  innerHTML - textContent   :::::
+// const list = document.getElementById('first'); //ul
+// const div = document.getElementById('second'); //div container
+// const item = document.querySelector('.item'); //li
+//
+// console.log(div.textContent); // Nos tira solo el text
+// console.log(list.textContent); // Nos tira solo el text
+// console.log(list.innerHTML); // Nos tira todo el content de HTML
+//
+// Queremos crear una UL y meter los mismos LI
+// const newUl = document.createElement('ul'); //Creamos elemento UL
+// newUl.innerHTML =
+// Usamos TEMPLATE
+//   ` <li class="item">List Item1</li>
+// <li>List Item2</li>`; // Copy Paste la lista desde el HTML
+// document.body.appendChild(newUl); // Appendchild el nuevo elemento
+//
+// SI QUEREMOS AGREGAR SOLO TEXTO: TEXTCONTENT
+// SI QUEREMOS AGREGAR UN CONTENIDO DINAMICO DE HTML
+// div.textContent = 'Hello people'; //Solo text
+// div.innerHTML = ` <li class="item">List Item1</li>
+// <li>List Item2</li>`; // Proper HTML dynamic.
+
+// ::::: Change CSS with STYLE  :::::
+// Es mejor usar CLASSLIST que solo STYLE.
+// Tenemos el .title CLASS ya estilizada
+// const random = document.querySelector('.random');
+// random.classList.add('title');
+// Asi agregamos los Styles, es mejor tenerlos hechos y mandarlos por CSS.
+
+// ::::::::::::::::::::::::::::::
+// :::::  Events Overview   :::::
+// ::::::::::::::::::::::::::::::
+// Respondemos a Eventos --> Cuando sucede algo respondemos: sea un hover, un click, scroll, etc.
+
+// :::::  Click Events  :::::
+// Ya tenemos unos STYLES realizados
+// 1) Seleccionamos el ELEMENT (btn, heading, etc)
+// 2) addEventListener(what to listen, what to do)
+//
+// Seleccionamos elementos: BTN y h2
+// const btn = document.querySelector('.btn'); //Nos devuelve un Node Object
+// const heading = document.querySelector('h2');
+//
+//CallBack Function ---> VER FUNCTION REFERENCE
+//
+// function changeColors() {
+//   let hasClass = heading.classList.contains('red');
+//   if (hasClass) {
+//     heading.classList.remove('red');
+//   } else {
+//     heading.classList.add('red');
+//   }
+// }
+
+// Agregamos la Function de lo que sucederá!
+// btn.addEventListener('click', function () {
+//   heading.classList.add('red');
+// });
+// H2 recibe la CLASS RED
+//
+// :::::  Function Reference   :::::
+//Usaremos esto dentro del mismo ejemplo anterior
+// Una vez establecida la Call Back Function:
+// btn.addEventListener('click', changeColors);
+
+// ::::      ::::
 //
 //
 //
 
-// :::::  General Concepts   :::::
+// ::::      ::::
 //
 //
 //
 
-// :::::  General Concepts   :::::
+// ::::      ::::
 //
 //
 //
 
-// :::::  General Concepts   :::::
+// ::::      ::::
 //
 //
 //
 
-// :::::  General Concepts   :::::
+// ::::      ::::
 //
 //
 //
 
-// :::::  General Concepts   :::::
+// ::::      ::::
 //
 //
 //
