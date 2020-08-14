@@ -327,18 +327,45 @@
 // Una vez establecida la Call Back Function:
 // btn.addEventListener('click', changeColors);
 
-// ::::      ::::
+// ::::  Mouse Events  ::::
+// Usamos el mismo HTML que antes
 //
-//
-//
+// const heading = document.querySelector('h2');
+// const button = document.querySelector('.btn');
+// button.addEventListener('click', function () {
+//   console.log('this is click');
+// });
+// button.addEventListener('mousedown', function () {
+//   console.log('this is mousedown');
+// });
+// button.addEventListener('mouseup', function () {
+//   console.log('this is mouseup');
+// });
+// //mouseenter : hover
+// heading.addEventListener('mouseenter', function () {
+//   heading.classList.add('blue');
+// });
+// //mouseleave: salimos.
+// heading.addEventListener('mouseleave', function () {
+//   heading.classList.remove('blue');
+// });
 
-// ::::      ::::
-//
-//
-//
+// ::::  Key Events    ::::
+// Creamos un INPUT en HTML
+// const nameInput = document.getElementById('name');
+// nameInput.addEventListener('keypress', function () {
+//   console.log('you typed');
+// });
+// nameInput.addEventListener('keydown', function () {
+//   console.log('keydown'); // Cuando la letra esta siendo apretada
+// });
+// nameInput.addEventListener('keyup', function () {
+//   console.log('you dont typed'); // Release the key
+// });
 
-// ::::      ::::
-//
+// ::::   Event Objects   ::::
+// Everytime we work with events we get these objects.
+// E, EVT, etc. ... Nos daran info del evento
 //
 //
 
