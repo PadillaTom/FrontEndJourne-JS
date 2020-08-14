@@ -82,7 +82,6 @@
 // }); // Me muestra toda la info y selecciona TODO !
 
 // :::::  Navigate the DOM :::::
-//
 // -----> CHILDREN <-----
 // There will be times where we need to navigate our DOM tree.
 // or reverse the DOM tree.
@@ -130,41 +129,130 @@
 // secondLi.style.color = 'red';
 
 // :::::  Text Content - Node Value  :::::
+// Returns the text value that is inside our element
+// const itemText = document.getElementById('special');
+// NODE VALUE:
+// const value = itemText.nodeValue;
+// console.log(value); // NULL , no se usa asi nomas el NodeValue
+//Como usarlo:
+// console.log(itemText.childNodes[0].nodeValue); // Nos muestra la lista CHILDNODES y elegimos el item
+// console.log(itemText.firstChild.nodeValue); // Otra manera si es el primer ITEM.
 //
-//
-//
+// TEXT CONTENT
+// const easyValue = itemText.textContent;
+// console.log(easyValue); // Nos devuelve el text directamente!
 
-// :::::  General Concepts   :::::
+// ::::: Get Attribute() and Set Attribute()   :::::
+// Por ejemplo: class, id, etc...
+// Agregaremos Dinamically
+// const firstClass = document.querySelector('.first');
+// const classValue = firstClass.getAttribute('class');
+// console.log(classValue); // Devuelve el FIRST
+// const idValue = firstClass.getAttribute('id');
+// console.log(idValue); // Devuelve SPECIAL
 //
+// const link = document.getElementById('link');
+// const showLink = link.getAttribute('href'); // Asociamos la ID
+// console.log(showLink); // Devuelve el href=" # " . ASTERISCO
 //
+// Llegar a un elemento sin ID ni CLASS. Navegar el DOM
+// const last = link.nextElementSibling;
+// last.setAttribute('class', 'first'); // (ATT, Value)
+// last.textContent = 'I also have a FIRST CLASS';  // CAMBIA COMPLETAMENTE EL TEXTO DENTRO DEL ELEMENTO
+// console.log(last);
+// Cuando veamos LINKS se agregará este mismo ITEM a la lista de NODE !
 //
+// const links = document.querySelectorAll('.first');
+// console.log(links); // Nos devuelve List de todos los FIRST class
 
-// :::::  General Concepts   :::::
-//
-//
-//
+// :::::  ClassList and ClassName  :::::
+// We have some styled classes already in CSS , but no element has been associated with them.
+// we hav some elements in HTML.
+// We will Apply, Remove, Check those classes.
 
-// :::::  General Concepts   :::::
-//
-//
-//
+// const first = document.getElementById('first');
+// const second = document.getElementById('second');
+// const third = document.getElementById('third');
+// ---> CHECK <---
+// const classValue = first.className;
+// console.log(classValue); // Devuelve Class Name
+// ---> ADD <---
+// second.className = 'colors'; // Damos Nombre a una nueva Clase
+// second.className = ' colors text';
+// Se sobre escribe si usamos en distrintos renglones!
+// Hacer atencion. Para esto tenemos Classlist:
+// Class List:
+// third.classList.add('colors');
+// third.classList.add('text');
+// Add multiple times:
+// third.classList.add('colors', 'text');
+// const classValue3 = third.classList; // Hacemos esto para Ver el elemento en LOG
+// console.log(classValue3);
+// ---> REMOVE <---
+// third.classList.remove('text');
+// ---> CONTAINS <---
+//"Condition" para ver si tiene dicha clase y pasar un parametro.
+// let result = third.classList.contains('colors');
+// if (result) {
+//   console.log('Hello World');
+// } else {
+//   console.log('No COLORS inside');
+// } // Output = HELLO WORLD
 
-// :::::  General Concepts   :::::
+// :::::  CreateElement - CreateTextNode - AppendChild  :::::
+// Usaremos las classes ya creadas y estilizadas en CSS
+// ---> createElement ("Element") <---
+// const bodyDiv = document.createElement('div');
+// ---> createTextNode ("text content") <---
+// const text = document.createTextNode('dynamic body Div');
+// ---> element.appendChild (childElement) <---
+// bodyDiv.appendChild(text); // Asociamos el text al bodyDiv.
 //
+// Paso final: Agregar dicho elemento en el BODY GLOBAL
+// document.body.appendChild(bodyDiv);
 //
-//
+// Ejemplo: Creamos el elemento, le damos un texto, y le agregamos una CLASS previamente estilizada en CSS
+// const result = document.querySelector('#result');
+// console.log(result.children); // Vemos los Child de result previamente
+// const headingDiv = document.createElement('h2');
+// const headingText = document.createTextNode('Dynamic Heading');
+// headingDiv.appendChild(headingText);
+// headingDiv.classList.add('blue');
+// Una vez creado el elemento lo agregamos al RESULT (Div que ya existia en el body)
+// result.appendChild(headingDiv);
+// console.log(result.children);
 
-// :::::  General Concepts   :::::
+// :::::  InsertBefore  :::::
+// by Default everything added to Body Dynamically gets isnerted after the JS
+// Usaremos el BodyDiv creado previamente y que fue insertado al final
+// insertBefore (que elemento, donde)
 //
+// Antes de  "document.body.appendChild(bodyDiv);"
+//en el video anterior , INSETAREMOS bodyDiv before the RESULT (original div)
+// document.body.insertBefore(bodyDiv, result); // Lo insertamos antes del DIV
 //
-//
+// Probamos lo mismo con el RESULT DYNAMICO (comentamos su append "result.appendChild(headingDiv);")
+// const first = document.querySelector('.colors');
+// result.insertBefore(headingDiv, first);
 
-// :::::  General Concepts   :::::
-//
-//
-//
+// :::::  Replace Child   :::::
+// replaceChild (new element, old element)
+// const smallHeading = document.createElement('h6');
+// const smallText = document.createTextNode(`I'm Small H6`);
+// smallHeading.classList.add('colors');
+// smallHeading.appendChild(smallText);
+// document.body.replaceChild(smallHeading, bodyDiv);
+// Hemos Quitado el "Dynamic body Div" y metido el H6
 
-// :::::  General Concepts   :::::
+// ::::: Prepend - InnerText  :::::
+// Aceleraria el proceso de agregar texto.
+// Instead of creating a TextNode, then Append:
+// const heading2 = document.createElement('h2');
+// heading2.innerText = `I'm dynamic text h2`;
+// document.body.prepend(heading2);
+//prepend by default los pone ARRIBA DE TODO
+
+// ::::: Remove - RemoveChild  :::::
 //
 //
 //
