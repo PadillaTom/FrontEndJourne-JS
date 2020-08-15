@@ -397,16 +397,167 @@
 // USAREMOS PARA LOS FORMS!!!!!
 
 // ::::  CurrentTarget - Target    ::::
-// Current -->
-//
-//
+// Current --> Refers to the element who has the event ATTACHED
+// Target --> The element on which the event OCCURED
+// Ej: 3 botones, misma clase, segundo tiene nested stuff.
+// Queremos aplicar un color verde a todos
+// const btns = document.querySelectorAll('.btn');
+// CurrentTarget:
+// btns.forEach(function (btn) {
+//   btn.addEventListener('click', function (e) {
+//     console.log("Current Target: ",e.currentTarget);
+//     e.currentTarget.style.backgroundColor = 'green';
+//   });
+// });
+// Target: Discrimina los elementos!!!! si clickeo en STRONG, solo se aplica a strong!
+// Solo se aplica a donde clickeamos (NO CLASE)
+// btns.forEach(function (btn) {
+//   btn.addEventListener('click', function (e) {
+//     console.log('target: ', e.target);
+//     e.target.style.color = 'black';
+//   });
+// });
 
-// ::::      ::::
+// ::::  Event Propagation: Bubbling - Capturing    ::::
+// Vamos a tener un UL dentro de DIV container
+// const container = document.querySelector('.container');
+// const listItems = document.querySelector('.list-items');
+//BUBBLING ---> Pasa los datos del Evento hacia el ROOT
+// function showBubbling(evt) {
+//   console.log('Current Target: ', evt.currentTarget);
+//   console.log('Target: ', evt.target);
+//   if (evt.target.classList.contains('link')) {
+//     console.log('It is a LINK!!!!');
+//   }
+// }
+// listItems.addEventListener('click', showBubbling, { capture: true });
+// container.addEventListener('click', showBubbling, { capture: true });
+// Que Sucede? Se activan los DOS! Container y ListItems
+// ---> BUBBLING <---  al tocar un Parnet, se activa la Child)
+// CT: nos tira la UL (lsitItems) y el DIV (container)
+// T: nos tira el A Href clickeado( ACTUAL TARGET! )
+// IF al ser un LINK (class) SUCEDERA ALGO!
 //
+// STOP PROPAGATION ---> Frena TODO
+// function stopPropagation(evt) {
+//   console.log('Clickeaste pero STOP');
+//   evt.stopPropagation();
+// }
+// listItems.addEventListener('click', stopPropagation);
 //
+// CAPTURING --->
+// Le ponemos capturing como tercer argument: {capture: true}
+// Pasa los datos del ROOT hacia abajo, al evento
+// Nos muestra todo EN ORDEN:
+//1) CONTAINER, 2) A, 3) UL, 4) A
 //
+// ::::   EXAMPLE DE PROPAGATION!!!   ::::
+// Why it is useful?
+// We are gonna add some element dinamically, and check how bubbling
+// will help us to select that element and do whatever we want with it.
+// Tenemos:  container con h1 y un btn
+// 1) targeteamos los 3
+// const container = document.querySelector('.container');
+// const btn = document.querySelector('.btn');
+// const heading = document.querySelector('.heading');
+// 2) Set up eventlistener for heading:
+// function sayHello() {
+//   console.log('Hello There');
+// }
+// heading.addEventListener('click', sayHello);
+// 3) What if this header was added DINAMICALLY?
+// Crearemos un elemento dynamico cada vez que click on btn
+// Comentamos el H1 statico
+// btn.addEventListener('click', function () {
+//   const newElem = document.createElement('h1');
+//   newElem.classList.add('heading');
+//   newElem.textContent = 'I am Dynamic, inside container';
+//   container.appendChild(newElem);
+// });
+// Nos tira error NULL ( Porque no podemos agregar un EventListener a un elemento que no existe (comentamos el h1))
+// Lo comentamos, asi no jode. (heading.addevent)
+// De todas formas, creamos uno dynamico, haciendo click al btn
+// TIRA ERROR! NULL. Comentamos todo lo realcionado a HEADING (event,log,selecelement)
+// PODEMOS USAR BUBBLING PARA LLEGAR A DICHO ELEMENTO DINAMICO
+// container.addEventListener('click', function (event) {
+//   if (event.target.classList.contains('heading')) {
+//     console.log('Hello There');
+//   }
+// });
+// CONCLUSION: PARA PODER LLEGAR A DICHO ELEMENTO DINAMICO:
+// NECESITAMOS PASAR POR EL PARENT (CONTAINER) USANDO IF(HAY ALGO CON CLASS "HEADING")
+// HACER TAL COSA (LOG).
+// ENTONCES, BTN CREA ELEMENTO DYNAMIC, CONTAINER.ADDEVENT BUSCA SI HAY HEADING(IF),
+// SI LA CONDITION ES MET: SUCEDE ALGO (LOG)
 
-// ::::      ::::
+// ::::   Form Submition  ::::
+// Listen to submit clicks, Prevent default, and get values.
+// Tenemos un form, action vacio, 3 inputs
+const form = document.getElementById('form');
+const name1 = document.getElementById('name');
+const password = document.getElementById('password');
+
+form.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  console.log('form submitted');
+  console.log(name1.value);
+  console.log(password.value);
+});
+// Se ve 1 SEGUNDITO Y DESAPARECE:
+// Porque by Default (action="" es un server) se envia la data y se refreshea el site.
+// usamos EVT.PREVENTDEFAULT();
+// Ahora queremos agarrar los valores: Usamos LOG, pero en vida real usaremos OTRA COSA.
+
+// ::::  Local Storage ::::
+// Web Storage API --> provided by browser (se refreshea en openin and closing of the browser)
+// Session (tab) and Local (browser) --> Set Item, Get Item, Remove Item, Clear
+// Both uses key:value
+// APPLICATION TAB IN  DEVTOOLS : vemos Key Value
 //
+// localStorage.setItem('name', 'Lohn'); // Queda si cerramos TAB
+// sessionStorage.setItem('name', 'John'); //  Se borra si cerramos TAB
 //
+// Si usamos la misma KEY : OVERWRITE; no podemos tener 2 name.
+// localStorage.setItem('name', 'john');
+// localStorage.setItem('friend', 'tom');
+// localStorage.setItem('job', 'developer');
+// localStorage.setItem('address', 'street 123');
 //
+// const nameGet = localStorage.getItem('name');
+// console.log(nameGet);
+// Vamos a la consola y vemos el NAME!!!
+// Removemos Name
+// localStorage.removeItem('name');
+// const anotherName = localStorage.getItem('name');
+// console.log(anotherName);
+
+// ::: LocalStorage with multiple Values :::
+// Generalmente tendremos un Array
+//JSON.stringify(), JSON.parse()
+//
+// const friends = ['john', 'peter', 'boby'];
+// localStorage.setItem('friends', friends);
+// Lo guarda como una STRING! NO ARRAY!
+// Necesitamos convertirlo a un JSON String
+// localStorage.setItem('friends', JSON.stringify(friends));
+// Para acceder a un value, necesitamos PARSE e ingresar por INDEX.
+// const values = JSON.parse(localStorage.getItem('friends'));
+// console.log(values[0]); //muestra el index 0 del array
+// console.log(values[1]); //muestra el index 1 del array
+//
+// IMPORTANTE: Check if the value is in LocalStorage, yes: assign, no: empty array.
+// Creamos un empty array: Fruits.
+// let fruits;
+// Tenemos already values for Fruits? yes: assign a fruits, no:fruits = [];
+// if (localStorage.getItem('fruits')) {
+//   fruits = JSON.parse(localStorage.getItem('fruits'));
+// } else {
+//   fruits = [];
+// }
+// console.log(`Fruit list: `, fruits);
+// En APPLICATION vemos que la KEY no existe.
+// fruits.push('Apple');
+// fruits.push('Orange');
+// localStorage.setItem('fruits', JSON.stringify(fruits));
+// El tema es que se van agregando por cada vez que Refresheamos, o CTRL + S.
+// Conclusion: Vemos si hay valores, si hay: Agregamos, si no: Creamos la lista vacia.
