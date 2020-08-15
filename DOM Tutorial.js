@@ -366,11 +366,38 @@
 // ::::   Event Objects   ::::
 // Everytime we work with events we get these objects.
 // E, EVT, etc. ... Nos daran info del evento
+// info about the triggered event
+//Ej: Tenemos un link abajo de 100vh (scroll para verlo) y cuando lo tocamos nos scrollea al top.
+// Queremos prevenir esto.
+// const heading = document.querySelector('h1');
+// const btn = document.querySelector('.btn');
 //
+// Primero vemos su INFO para ver como funciona
+// heading.addEventListener('click', function (event) {
+//   console.log(event.currentTarget); // Nos muestra (cuando click) toda la info
+// });
+// btn.addEventListener('click', function (event) {
+//   console.log(event.currentTarget); // Nos muestra (cuando click) toda la info
+// });
 //
+// AGREGAMOS al elemento clickeado la class BLUE ( si es BTN)
+// btn.addEventListener('click', function (event) {
+//   event.currentTarget.classList.add('blue');
+//   console.log(event.type); // Nos muestra el type
+// }); // Asi evitamos reescribir el "btn.addEventListener." y hay menos
+//chances de mal tipear.
+//
+// PREVENIMOS el default del link (scroll to top), usando CB Function
+// function someFunc(e) {
+//   e.preventDefault();
+//   console.log(e.type);
+// }
+// link.addEventListener('click', someFunc);
+// De esta forma al hacer CLICK no nos envia al top.
+// USAREMOS PARA LOS FORMS!!!!!
 
-// ::::      ::::
-//
+// ::::  CurrentTarget - Target    ::::
+// Current -->
 //
 //
 
