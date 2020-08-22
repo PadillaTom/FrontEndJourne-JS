@@ -26,28 +26,28 @@
 //
 // :::::: Call  ||  Apply ||  Bind ::::::
 // CALL ----->
-const john = {
-  name: 'John',
-  age: 25,
-  greet: function () {
-    console.log(this); // Mostramos a quien refiere THIS
-    console.log(`Hello i am ${this.name} and i'am ${this.age}`);
-  },
-};
-const bob = {
-  name: 'Bobby',
-  age: 40,
-};
+// const john = {
+//   name: 'John',
+//   age: 25,
+//   greet: function () {
+//     console.log(this); // Mostramos a quien refiere THIS
+//     console.log(`Hello i am ${this.name} and i'am ${this.age}`);
+//   },
+// };
+// const bob = {
+//   name: 'Bobby',
+//   age: 40,
+// };
 // john.greet();
 //
 // Entonces si quremos la misma Function (greet) para 50k personas.... deberíamos copiar y pegar.....
 // Solucion: usamos el CALL METHOD
 // Call--> Runs instantly
 // FUNCTION FROM OUTSIDE-->
-function greet(city) {
-  console.log(this);
-  console.log(`Hi i am ${this.name} and i am ${this.age}. I live in ${city}`);
-}
+// function greet(city) {
+//   console.log(this);
+//   console.log(`Hi i am ${this.name} and i am ${this.age}. I live in ${city}`);
+// }
 // greet.call(john);
 // greet.call(bob);
 // Pasamos los objects creados... si no hay creados?
@@ -55,23 +55,51 @@ function greet(city) {
 // FUNCTION AS METHOD:
 // john.greet.call(bob); // Imprime BOB, agarrando el Method dentro de Tom
 // Arguments in Function:
-greet.call(john, 'Capital');
-greet.call(bob, 'Olivos');
-greet.call({ name: 'Tommy', age: 25 }, 'Arg');
+// greet.call(john, 'Capital');
+// greet.call(bob, 'Olivos');
+// greet.call({ name: 'Tommy', age: 25 }, 'Arg');
 //
 //
 // APPLY ----->
 // Retocamos la FUNC GREET (city)
 // Igual que Call, pero por un ARRAY
-greet.apply(john, ['Collonges']);
-greet.apply(bob, ['haute']);
-greet.apply({ name: 'susan', age: 25 }, ['America']);
+// greet.apply(john, ['Collonges']);
+// greet.apply(bob, ['haute']);
+// greet.apply({ name: 'susan', age: 25 }, ['America']);
 // Queremos meter una City
 //
 //
 // BIND ------>
 // Lo podemos asignar y usar mas tarde, Pasa LIST (como call)
 // 1) Assign the greet
-const susanGreet = greet.bind({ name: 'Susy', age: 25 }, 'France');
+// const susanGreet = greet.bind({ name: 'Susy', age: 25 }, 'France');
 // 2) Invoke the greet.
-susanGreet();
+// susanGreet();
+//
+//
+// !!!!!!!!! BUTTON EXAMPLE !!!!!!!!!!
+// Funcion de sumar
+const counter = {
+  count: 0,
+  increment() {
+    console.log(this);
+    this.count++;
+    console.log(this.count);
+  },
+};
+// Seleccion de BTN
+const btn = document.querySelector('.increment');
+
+// FAIL --->
+// btn.addEventListener('click', counter.increment);
+// NAN !!!!  ---> THIS = Button. button not a number.
+
+// Solution 1) BIND --> Elijo donde quiero alojar la function (counter)
+// btn.addEventListener('click', counter.increment.bind(counter));
+//
+// Solution: LA MEJOR --> QUe pasa si queremos remover la EvtListener?
+const increment = counter.increment.bind(counter);
+btn.addEventListener('click', increment);
+btn.removeEventListener('click', increment);
+// Es buena por si queremos REMOVER el event listener pero de todas formas
+// tener la posibilidad de Referencia al Function
