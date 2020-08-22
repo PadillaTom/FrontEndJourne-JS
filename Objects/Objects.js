@@ -197,38 +197,38 @@ const person = {
 // ::::: PROTOTYPAL INHERITANCE MODEL :::::
 // We are going to store some properties and methods on a proptotype, instead of creating a copy for each new instance.
 
-function Account(name, initialBalance) {
-  this.name = name;
-  this.balance = initialBalance;
-  // (this.deposit = function (amount) {
-  //   this.balance += amount;
-  //   console.log(`Hello ${this.name}, your balance is ${this.balance}`);
-  // });
-}
+// function Account(name, initialBalance) {
+//   this.name = name;
+//   this.balance = initialBalance;
+// (this.deposit = function (amount) {
+//   this.balance += amount;
+//   console.log(`Hello ${this.name}, your balance is ${this.balance}`);
+// });
+// }
 
-const tom = new Account('tom', 500);
+// const tom = new Account('tom', 500);
 // tom.deposit(500);
 // Todo funciona de maravilla, pero....SI tenemos 30k clientes...
 // Esto llevará a errores. Para esto usamos PROTOTYPE Property --> Returns Object
 // console.log(Account.prototype); // vemos que es una FUNCTION
 // Supongamos queremos agregar el BANK Name, no hace falta meterlo en la func inicial... ya que siempre será el mismo
-Account.prototype.bank = 'Padis Bank';
-console.log(tom); // Vemos que crea un PROTO Object que contiene el BANK
-console.log(tom.bank); // Ingresamos al PROTO
+// Account.prototype.bank = 'Padis Bank';
+// console.log(tom); // Vemos que crea un PROTO Object que contiene el BANK
+// console.log(tom.bank); // Ingresamos al PROTO
 //
 //CONCLUSION: Es mejor SET un method dentro de un PROTO si es que se repetirá por todo el code.
 // Agregamos la DEPOSIT dentro de un PROTO, ya que se usará para cada cliente
-Account.prototype.deposit = function (amount) {
-  this.balance += amount;
-  console.log(`Hello ${this.name}, your balance is ${this.balance}`);
-};
+// Account.prototype.deposit = function (amount) {
+//   this.balance += amount;
+//   console.log(`Hello ${this.name}, your balance is ${this.balance}`);
+// };
 
 //Probamos con distintos clientes
-const padi = new Account('Padi', 0);
-const katy = new Account('Katy', 1000);
-tom.deposit(1000);
-padi.deposit(500);
-katy.deposit(2000);
+// const padi = new Account('Padi', 0);
+// const katy = new Account('Katy', 1000);
+// tom.deposit(1000);
+// padi.deposit(500);
+// katy.deposit(2000);
 //
 // PROPERTY LOOKUP:
 // If the instance (ACCOUNT) hast this.bank = "Katys Bank"
@@ -236,14 +236,16 @@ katy.deposit(2000);
 //
 // EVERYTHIN IN JS IS AN OBJECT:
 //Array: Cada vez que creamos un Array, tenemos access al PROTO, quien contiene todas las properties o methods
-console.log([]);
+// console.log([]);
 //
 // Object: Idem Array. Tenemos acceso al PROTO y de ahí a las parameters y methods.
-console.log({});
+// console.log({});
 //
 // Instance: Dentro de nuesto ACCOUNT tenemos un PROTO, que nos lleva al Object Constructor.
-console.log(katy);
+// console.log(katy);
 //
 // CONCLUSION: TODO LLEVA AL OBJECT CONSTRUCTOR, QUIEN NOS PERMITIRA ACCEDER A SUS PROPERTIES AND METHODS
 //
 // :::::: ES6 SYNTAX ::::::
+// Latest Update of Javascript
+// ES6 Classes or Syntactic Sugar for Prototypal inheritance.
