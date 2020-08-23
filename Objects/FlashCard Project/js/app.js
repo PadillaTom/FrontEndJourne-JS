@@ -194,8 +194,14 @@ document.addEventListener('DOMContentLoaded', function () {
 //
 // CONCLUSION:
 // Agregamos una question, Podemos ver su answer, Delete it, Edit it: Volverla a mostrar con sus valores y poder modificarlas.
+// Seleccionamos todos los elementos a utilizar
+// Dentro de una MAIN function (eventListeners) pondremos la mayoria de code.
+// Creamos algunas varbiales como ID y Data (array)
+// Al LOAD the DOM: Disparamos la MAIN (eventListeners)
+// Creamos CONSTRUCTORS donde pasaremos INSTANCES y PROTOTYPES
 //
-//
-//
-//
+// Add Question: Creamos el element dentro del DOM con values dynamics
+// Show Answer: Toggle class SHOWITEM al NextSibling (siendo ambos child, seleccionaremos el CONTENIDO del click event)
+// Delete Question: Primero tomamos el ID del Elemento clickeado, Borramos del DOM, asi mismo borramos del Array y actualizamos el Array
+// Edit: Primero Tomamos el ID del elemento clickeado, Sacamos del DOM y abrimos el Question Card. Dentro metemos como valores(input): Title and Answer.
 //
