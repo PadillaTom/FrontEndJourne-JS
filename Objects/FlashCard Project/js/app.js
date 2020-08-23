@@ -15,8 +15,13 @@
 //      Feedback Succeed : Usamos la Question Constructor (ELSE: Agregamos object al Array DATA and id++)
 //      4') Clear Inputs Fields --> Borramos el input de la question creada.
 //          Add Question Card --> Usamos los values para display una card dentro de Question List (DIV)
-//
-// 6)
+// 5) Question Card Buttons and everything
+//      5') Delete: Removemos la Class Delete-Flashcard
+//      5') Show Answer: Toggle la class ShowItem
+//      5') Edit: Seleccionamos la Question por ID, lo agregamos a DELETE aswell.
+//      5')       Remove Element form DOM
+//      5')       Modificamos Data (Array) con los nuevos objects restantes, Added to DELETE aswell
+//      5')       Mostrar Question edited in Question Card
 //
 //
 //
@@ -83,7 +88,56 @@ function eventListeners() {
       //
       // ENTONCES --> Borrar fields, add question, show success
       ui.addQuestion(questionList, question);
-      ui.cleaFlieds(questionInput, answerInput);
+      ui.clearFields(questionInput, answerInput);
+    }
+  });
+  // Step 5 ---> Work with the question card
+  questionList.addEventListener('click', function (evt) {
+    evt.preventDefault(); // Prevenir ir al top de la web cuando click
+    // console.log(evt.target); // Probamos con los Btns : Vemos las Classes que llevan los Hrefs
+    if (evt.target.classList.contains('delete-flashcard')) {
+      let id = evt.target.dataset.id; // Seleccionamos por ID
+      //   console.log('Delte Btn');  // Probamos
+      questionList.removeChild(
+        evt.target.parentElement.parentElement.parentElement
+      ); // Apuntamos a COL-MD-4
+      //   console.log(data);  // Probamos un ANTES de Actualizar Array
+      // Copiamos de "edit answer" para removerla del Array aswell
+      let tempData = data.filter(function (item) {
+        return item.id !== parseInt(id); // Pedimos TODO menos ID
+      });
+      data = tempData;
+      //   console.log(data); // Probamos un AFTER de Actualizar Array
+    } else if (evt.target.classList.contains('show-answer')) {
+      //   console.log('Answer Btn'); // Probamos
+      evt.target.nextElementSibling.classList.toggle('showItem');
+      // Apuntamos al Next Sibling (clickamos en ANSWER pero queremos target la ShoItem que contiene el text)
+    } else if (evt.target.classList.contains('edit-flashcard')) {
+      // Select la Quesiton por ID
+      let id = evt.target.dataset.id; // Usamos la ID que fue otorgada la Question
+      // Sacarla del DOM
+      questionList.removeChild(
+        evt.target.parentElement.parentElement.parentElement
+      ); // Apuntamos a COL-MD-4
+      // Show the Question Card on top, to be edited
+      ui.showQuestion(questionCard);
+      // Encontrar la Question por ID (dado arriba)--> Filtramos la DATA (array)
+      const tempQuestion = data.filter(function (item) {
+        return item.id === parseInt(id); // Pedimos al Array el ID para el item (transformado a INTEGER)
+      });
+      // Rest of the Data (array)
+      let tempData = data.filter(function (item) {
+        return item.id !== parseInt(id); // Array quedará con el resto de los items
+      });
+      // PROBAMOS TODO HASTA AQUI: 1- Dlete, 2-Show Answer, 3- Edit so far: Open Question card , Remove Item form Array
+      //   console.log(data); // Probamos un ANTES de Actualizar Array
+      data = tempData;
+      //   console.log(data); // Probamos un AFTER de Actualizar Array
+      //
+      // ADD la Temp Question al Question Card para Editar-->
+      // Sabemos que la TempQuestion = Array, entonces debemos ingresar al primer INDEX (0)
+      questionInput.value = tempQuestion[0].title; // Question Itself
+      answerInput.value = tempQuestion[0].answer; // Answer
     }
   });
 }
@@ -118,7 +172,7 @@ UI.prototype.addQuestion = function (element, question) {
      <div class="flashcard-btn d-flex justify-content-between">
 
       <a href="#" id="edit-flashcard" class=" btn my-1 edit-flashcard text-uppercase" data-id="${question.id}">edit</a>
-      <a href="#" id="delete-flashcard" class=" btn my-1 delete-flashcard text-uppercase">delete</a>
+      <a href="#" id="delete-flashcard" class=" btn my-1 delete-flashcard text-uppercase" data-id="${question.id}">delete</a>
      </div>
     </div>`;
   element.appendChild(div); // Agrega lo creado al DIV QUESTION LIST.
@@ -135,3 +189,13 @@ UI.prototype.clearFields = function (question, answer) {
 document.addEventListener('DOMContentLoaded', function () {
   eventListeners();
 });
+
+//
+//
+// CONCLUSION:
+// Agregamos una question, Podemos ver su answer, Delete it, Edit it: Volverla a mostrar con sus valores y poder modificarlas.
+//
+//
+//
+//
+//
