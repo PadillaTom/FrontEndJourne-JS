@@ -55,6 +55,12 @@ class UI {
     if (total < 0) {
       this.balance.classList.remove('showGreen', 'showBlack'); // Sacamos clases predeterminadas
       this.balance.classList.add('showRed'); // Agregamos BTN ROJO
+    } else if (total > 0) {
+      this.balance.classList.remove('showRed', 'showBlack');
+      this.balance.classList.add('showGreen');
+    } else if (total === 0) {
+      this.balance.classList.remove('showRed', 'showGreen');
+      this.balance.classList.add('showBlack');
     }
   }
   // TotalExpense (suma de todos elementos de la List)
