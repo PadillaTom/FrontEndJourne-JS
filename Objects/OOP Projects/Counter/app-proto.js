@@ -99,6 +99,4 @@ function getElement(selection) {
 //
 
 // :::::: Class ::::::::::::
-//
-//
-//
+// ver app-class.js
