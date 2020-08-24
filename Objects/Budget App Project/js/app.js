@@ -115,6 +115,45 @@ class UI {
     this.expenseList.appendChild(div); // Agregamos todo lo creado COMO CHILD
   }
   //
+  // ----> Edit and Delete Methods:
+  // Edit -->
+  editExpense(element) {
+    // Usamos el Dataset-id dado en el DIV creado DYNAMIC
+    let id = parseInt(element.dataset.id); // Tomamos el ID
+    // Sacar el element de la List (Targeteamos el Parent quien los Display and remove it)
+    // Usamos el LOG para visualizar en que nivel andamos
+    let parent = element.parentElement.parentElement.parentElement; // EXPENSE-LIST
+    // console.log(parent); // Visualizamos los niveles hasta encontrar PARENT GENERAL
+    this.expenseList.removeChild(parent); // Removemos el child del EXPENSE-LIST
+    // ** Una vez removido del DOM, queremos sacarlo del Array + Tomar valores y exponerlos en INPUT
+    // 1) Una vez Removed from DOM: tomamos el ID para sacarlo del Array
+    let expense = this.itemList.filter(function (item) {
+      return item.id === id; // SI el id de este ITEM es = ald ID general del edit expense --> Return it, so i can work with it
+    });
+    // Sacamos el resto que no Match el ID, del ARRAY
+    let tempList = this.itemList.filter(function (item) {
+      return item.id !== id;
+    });
+    // FASE FINAL: asignar la Array Principal a la Nueva Array sin el elemento tomado por ID
+    this.itemList = tempList;
+    this.showBalance(); // --> SIEMPRE MOSTRAR NUEVO BALANCE
+    // 2) Add Values to the Input Fields
+    this.expenseInput.value = expense[0].title; // Tomamos el Primer index del nuevo array (contiene el elemento a eliminar, seleccionado por ID. NADA MAS)
+    this.amountInput.value = expense[0].amount;
+  }
+  // Delete -->
+  deleteExpense(element) {
+    let id = parseInt(element.dataset.id);
+    let parent = element.parentElement.parentElement.parentElement;
+    this.expenseList.removeChild(parent); // Removemos from DOM
+    let tempList = this.itemList.filter(function (item) {
+      return item.id !== id; // Removemos from Array
+    });
+    // FASE FINAL: asignar la Array Principal a la Nueva Array sin el elemento tomado por ID
+    this.itemList = tempList;
+    this.showBalance(); // --> SIEMPRE MOSTRAR NUEVO BALANCE
+  }
+  //
   // ----> TotalExpense (suma de todos elementos de la List)
   totalExpense() {
     // let total = 400; // Probamos con Hard Code
@@ -158,8 +197,15 @@ function eventListeners() {
   });
   //
   // Expense List Click
-  expenseList.addEventListener('click', function () {
-    //
+  expenseList.addEventListener('click', function (event) {
+    // Encontrar donde Clickeamos , a que elemento
+    // console.log(event.target); // Vemos que edit= href // delete= icon
+    // Usar los elementos deseados: HREF
+    if (event.target.classList.contains('edit-icon')) {
+      ui.editExpense(event.target);
+    } else if (event.target.parentElement.classList.contains('delete-icon')) {
+      ui.deleteExpense(event.target.parentElement);
+    }
   });
 }
 //
