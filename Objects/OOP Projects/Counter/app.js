@@ -34,13 +34,13 @@ function getElement(selection) {
 // Creamos la Constructive Function
 // Creamos la Function de GETELEMENT (Selecciona un elemento, SI true: return it, False: ERROR Message)
 // Creamos Variables descriptivas que alojen la Seleccion deseada y la pasen por la Constructive Function
-// ej:   const Variable = new Counter (getElement (".clase deseada"), valor inicial);
+// ej:  const Variable = new Counter (getElement (".clase deseada"), valor inicial);
 // LA MAGIA: Podemos pasar cantidad infinita a la Constructive Func, solo debemos Seleccionar el elemento deseado.
-// Ahora queremos Seleccionar los Botones de dentro (increase, decrease, reset)
+// --> Select los Botones de dentro (increase, decrease, reset)
 // this.resetBtn = element.querySelector('.reset');
 // this.decreaseBtn = element.querySelector('.decrease');
 // this.increaseBtn = element.querySelector('.increase');
-// Select el Value + Mostrarlo dentro del DOM
+// --> Select el Value + Mostrarlo dentro del DOM
 // this.valueDOM = element.querySelector('.value'); // Select
 // this.valueDOM.textContent = this.value; // Add it to this Value.
 //
