@@ -57,15 +57,77 @@ class UI {
       this.balance.classList.add('showRed'); // Agregamos BTN ROJO
     } else if (total > 0) {
       this.balance.classList.remove('showRed', 'showBlack');
-      this.balance.classList.add('showGreen');
+      this.balance.classList.add('showGreen'); // Mostramos Verde
     } else if (total === 0) {
       this.balance.classList.remove('showRed', 'showGreen');
-      this.balance.classList.add('showBlack');
+      this.balance.classList.add('showBlack'); // Standard Black
     }
   }
-  // TotalExpense (suma de todos elementos de la List)
+  //
+  // ----> Submit Expense Form
+  submitExpenseForm() {
+    const expenseValue = this.expenseInput.value; // Agarramos value del INPUT
+    const amountValue = this.amountInput.value; // Value del input
+    if (expenseValue === '' || amountValue === '' || amountValue < 0) {
+      this.expenseFeedback.classList.add('showItem'); // SI se da alguna condition: mostramos Feedback
+      this.expenseFeedback.innerHTML = `<p> Cannot be Empty or - </p>`;
+      const self = this; // Guardamos el THIS
+      setTimeout(function () {
+        self.expenseFeedback.classList.remove('showItem'); // Removemos el feedback
+      }, 3500);
+    } else {
+      let amount = parseInt(amountValue); //Pasamos el Value a INTEGER
+      this.expenseInput.value = ''; // vaciamos el INPUT
+      this.amountInput.value = ''; // Vaciamos
+      // Queremos Crear un OBJECT para pasarlo al Array donde alojaremos los valores y la mostraremos luego
+      let expense = {
+        id: this.itemID, // ID dado
+        title: expenseValue, // Nombre del Gasto
+        amount: amount, // Gasto pasado  a INT
+      };
+      this.itemID++; // Aumentamos la ID para el prox Item
+      this.itemList.push(expense); // Agregamos la Expense (objecto creado) al Array
+      this.addExpense(expense); // Add la Expense al Web
+      // ----> Show Balance : Actualizar el nuevo Balance
+      this.showBalance();
+    }
+  }
+  //
+  // ----> Add Expense (agregar la Expense , object, al Website)
+  addExpense(expense) {
+    const div = document.createElement('div');
+    div.classList.add('expense');
+    div.innerHTML = ` <div class="expense-item d-flex justify-content-between align-items-baseline">
+
+         <h6 class="expense-title mb-0 text-uppercase list-item">${expense.title}</h6>
+         <h5 class="expense-amount mb-0 list-item">${expense.amount}</h5>
+
+         <div class="expense-icons list-item">
+
+          <a href="#" class="edit-icon mx-2" data-id="${expense.id}">
+           <i class="fas fa-edit"></i>
+          </a>
+          <a href="#" class="delete-icon" data-id="${expense.id}">
+           <i class="fas fa-trash"></i>
+          </a>
+         </div>
+        </div>`; // Las Expense ID, title, amount vienen del Object Creado
+    this.expenseList.appendChild(div); // Agregamos todo lo creado COMO CHILD
+  }
+  //
+  // ----> TotalExpense (suma de todos elementos de la List)
   totalExpense() {
-    let total = 400; // Probamos con Hard Code
+    // let total = 400; // Probamos con Hard Code
+    let total = 0; // Comenzamos con el monto 0
+    if (this.itemList.length > 0) {
+      // console.log(this.itemList); // Vemos el Array Creado, Falta trabajar sus Objects
+      total = this.itemList.reduce(function (acc, curr) {
+        // console.log(`total ${acc} and current : ${curr.amount}`);
+        acc += curr.amount; // En pocas palabras: ACC = INDEX // CURR = OBJECT
+        return acc; // SIEMPRE RETURN ACC
+      }, 0); // 0 = El tipo de data ( numero y comenzando de 0)
+    }
+    this.expenseAmount.textContent = total; // Actualizamos el Valor. Si no se da la condicion = 0
     return total;
   }
 }
@@ -88,10 +150,11 @@ function eventListeners() {
     ui.submitBudgetForm();
   });
   //
-  //Expense Form Submit
+  // Expense Form Submit
   expenseForm.addEventListener('submit', function (event) {
     // Prev Default de forms:
     event.preventDefault();
+    ui.submitExpenseForm();
   });
   //
   // Expense List Click
@@ -119,3 +182,9 @@ document.addEventListener('DOMContentLoaded', function () {
 // METHODS: Crearemos Functions a ser invokadas en Events
 // EVENTS: Invokaremos las Funct creadas en Methods --> ui.Funct
 // Metodo de trabajo: Agregamos los methodos al Constructor y los pasamos en los EVENTS
+//
+// TIP:
+// Siempre que querramos hace elementos dinamicos, conviene Hacer la Web
+// en HTML y CSS, estatica, y luego (una vez creada la Dynamic Elements),
+// Coment the static HTML Out.
+// Pocas Palabras: Make it in HTML, apply classes, Coment it out and addit with Template Literals
