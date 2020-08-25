@@ -1,3 +1,7 @@
+// ::::: Gallery Proto ::::::::
+
+// :: Selection Function ::
+//
 function getElement(selection) {
   const element = document.querySelector(selection);
   if (element) {
@@ -7,3 +11,6 @@ function getElement(selection) {
     `Please check "${selection}" selector, no such element exists`
   );
 }
+//
+//
+//
