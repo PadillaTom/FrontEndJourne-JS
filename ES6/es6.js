@@ -3,7 +3,7 @@
 // New Versions. In 2015 = ES6.
 // There is es7, es8. But ES6 is the LATEST MAJOR UPDATE.
 // Here we will see as well es7, and es8.
-//
+
 // --------------------------> VAR, LET, CONST
 // Define, Update, Redefine by using VAR !!! ----> NOT GOOD
 // CONST cannot mutate primitive types.
@@ -42,11 +42,101 @@
 // Probamos Var Let Const:
 // 1) VAR --> dentro de TEST ---> CAMBIA!!!!
 // 2) LET -->
-let total = 100;
-let test = true;
-if (test) {
-  // inside this: Local Scope
-  let total = 'Tu culo'; // Var -> CAMBIA!!! || Let -> NO CAMBIA!! || Const ->
-  console.log('hello there');
-}
-console.log(total);
+// let total = 100;
+// let test = true;
+// if (test) {
+//   // inside this: Local Scope
+//   let total = 'Tu culo'; // Var -> CAMBIA!!! || Let -> NO CAMBIA!! || Const ->
+//   console.log('hello there');
+// }
+// console.log(total);
+//
+
+// --------------------------> Template Strings
+// `` --> Podemos pasar cualquier tipo de " " '' y variables.
+// Ademas: ${} nos permite acceder a values!
+// const name = 'TOM';
+// console.log(`my name is : ${name}`);
+//
+
+// --------------------------> Template String HTML
+// Lo mejor de Template Literals es poder usarla para HTML dynamicamente.
+// result.innerHTML = `<p class="tu vieja"> ${num1+num2} </p>`
+// Otro Ejemplo mas complejo:
+const person = {
+  // Tenemos un Array
+  name: 'Tom',
+  job: 'Tu vieja',
+  hobbies: ['Surfing', 'baking', 'bowling'],
+};
+const result = document.getElementById('result'); // Seleccionamos el Elemento a modificar
+result.innerHTML = `
+<h2>${person.name}<h2>
+<p>${person.job}<p>
+<ul>${person.hobbies
+  .map(function (item) {
+    return `<li>${item}</li>`;
+  })
+  .join('')}</ul>
+`; // MAP separa los elementos con Commas ",". usando JOIN (" ") Reemplazamos las Commas por espacios
+//
+
+// --------------------------> Tagged Template Literals
+// Poder pasar las Template Literals por una Function.
+//
+//
+//
+
+// -------------------------->
+//
+//
+//
+//
+
+// -------------------------->
+//
+//
+//
+//
+
+// -------------------------->
+//
+//
+//
+//
+
+// -------------------------->
+//
+//
+//
+//
+
+// -------------------------->
+//
+//
+//
+//
+
+// -------------------------->
+//
+//
+//
+//
+
+// -------------------------->
+//
+//
+//
+//
+
+// -------------------------->
+//
+//
+//
+//
+
+// -------------------------->
+//
+//
+//
+//
