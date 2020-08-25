@@ -63,31 +63,53 @@
 // Lo mejor de Template Literals es poder usarla para HTML dynamicamente.
 // result.innerHTML = `<p class="tu vieja"> ${num1+num2} </p>`
 // Otro Ejemplo mas complejo:
-const person = {
-  // Tenemos un Array
-  name: 'Tom',
-  job: 'Tu vieja',
-  hobbies: ['Surfing', 'baking', 'bowling'],
-};
-const result = document.getElementById('result'); // Seleccionamos el Elemento a modificar
-result.innerHTML = `
-<h2>${person.name}<h2>
-<p>${person.job}<p>
-<ul>${person.hobbies
-  .map(function (item) {
-    return `<li>${item}</li>`;
-  })
-  .join('')}</ul>
-`; // MAP separa los elementos con Commas ",". usando JOIN (" ") Reemplazamos las Commas por espacios
+// const person = {
+//   // Tenemos un Array
+//   name: 'Tom',
+//   job: 'Tu vieja',
+//   hobbies: ['Surfing', 'baking', 'bowling'],
+// };
+// const result = document.getElementById('result'); // Seleccionamos el Elemento a modificar
+// result.innerHTML = `
+// <h2>${person.name}<h2>
+// <p>${person.job}<p>
+// <ul>${person.hobbies
+//   .map(function (item) {
+//     return `<li>${item}</li>`;
+//   })
+//   .join('')}</ul>
+// `; // MAP separa los elementos con Commas ",". usando JOIN (" ") Reemplazamos las Commas por espacios
 //
 
 // --------------------------> Tagged Template Literals
-// Poder pasar las Template Literals por una Function.
-//
-//
-//
+// Poder pasar las Template Literals por una Function. Components Libraries are built using Template Literals
+// const author = 'Some Author';
+// const statement = 'Some Statement';
+// const quote = highlight`Here is the ${statement} by ${author}`;
+// console.log(quote);
+// const result = document.getElementById('result');
+// result.innerHTML = quote;
+// Digamos que queremos STRONG text, arround Variables --> Usaremos Tag Template Literal
+// Creamos una Function que pasaremos en QUOTE.
+// Dicha function tendrá dos arguments: "strings" and "acces to variables"
+// function highlight(text, ...vars) {
+//Veremos en profundidad mas adelante: Acumula todas las VARS
+// console.log({ text, vars }); // Imprime dos Array separados: Text (siempre un empty str al final), Vars
+// const awesomeText = text.map((item, index) => {
+//Mapeamos Text (iterar por cada elemento del Array: TEXT)
+//     return `${item}<strong class =blue"> ${vars[index] || ''} </strong>`; // Ver abajo
+//   });
+//   return awesomeText.join(''); // invokamos la func.join("") sin nada que los separe. Default = ","
+// }
+// EXPLICACION AWESOMETEXT
+// Mapeamos TEXT (dicha array contiene elementos de texto)
+// return `<primer item> strong, <primer variable del array [0]> strong.`
+// Devuelve TEXTO strong VARIABLE. --> Itera por cada elemento del ARRAY!!!!!
+//"Here is the + strong + Statement + by + Author"
+//"texto[0] + strong + var[0] + texto[1] + var[1]" ---> SE REPITE
+// || " " -----> QUIERE DECIR QUE AL FINAL IMPRIME ESPACIO, en vez del ultimo item del Array Text (que daría UNDEFINED)
 
-// -------------------------->
+// --------------------------> Arrow Function Basics
 //
 //
 //
