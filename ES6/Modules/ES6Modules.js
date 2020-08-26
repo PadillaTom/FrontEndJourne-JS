@@ -1,7 +1,8 @@
 // ::::::::::::: ES6 MODULES ::::::::::::::::::
-//
-//
-//
+// Module: One statement placed in a separate File.
+// We can Reach this module whenever we need this statement
+// We don't have to navigate one GIANT file of JS.
+// React uses the SAME! SYSTEM!!!
 
 // -----------------------> <--------------------------
 //
