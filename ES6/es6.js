@@ -461,7 +461,112 @@
 // sayHello(...john);
 
 // -------------------------->  REST OPERATOR  <----------------------------
+// Hace lo oposite que SPREAD, Gathers values. NO SE PUEDE REPETIR LA PALABRA REST!
+// ---> Destructuring
+// Array:
+// const fruit = ['Appel', 'pomme', 'Orange'];
+// const [index1, ...rest] = fruit; // Separa el Primer INdex, el resto se mantiene dentro de un Array
+// console.log(index1, rest);
+// // Object:
+// const person = { name: 'Tom', last: 'Smith', job: 'Dev' };
+// const { job, ...rest2 } = person; // Separa el Primer Key seleccionado del REST
+// console.log(job, rest2);
+//
+// Electing Parameter where we are Passing a Function
+// REST ---> PARAMETER ///// SPREAD ---> ARGUMENT
+// Usando REST voy a juntar todos los parametros con ...y los puedo trabajar
+// const getAverage = (name, ...scores) => {
+// PASADA COMO PARAMETER
+//   console.log(name);
+//   console.log(scores);
+//   let total = 0;
+//   for (const score of scores) {
+//     // For Score inside Scores (passed as parameter)
+//     total += score; // Total is Total plus each score.
+//   }
+//   console.log(`${name} Average: ${total / scores.length}`); // Total / number of Scores
+// };
+// getAverage(person.name, 10, 20, 0); // 30 total, 3 elementos = 10 average
+// Usando Spread:
+// const spreadScores = [10, 10, 10, 10, 10, 10];
+// getAverage(person.name, ...spreadScores); // PASADA COMO ARGUMENT
 
-// -------------------------->  NEW STRING METHODS  <----------------------------
+// -------------------------->  ARRAY. FROM and OF  <----------------------------
+// Creates a new Array instance from a viarble number of Arguments
+// ----> OF:
+// const friends = Array.of('John', 2, true); // Creamos el Array DE dichos valores
+// console.log(friends);
+//
+// ----> FROM: Returns an Array Object from any object with Length or Iterable
+// const udemy = 'Udemy'; // String
+// console.log(Array.from(udemy)); // Armamos una Array de las Letras de Udemy
+// Arguments are Objects too -->
+// function countTotal() {
+//   console.log(arguments); // Vemos que los Arguments pasados son un Object, parecido a Array. Crearemos un Array de dichos arguments
+//   console.log(Array.from(arguments)); // Vemos que es de type ARRAY!
+// Ya que es un Array podemos usar Methods:
+//   let total = Array.from(arguments).reduce((total, curr) => (total += curr), 0); // Reduce: itera uo por uno, alojando sus valores en Total y sumando el Current. EMPEZANDO DE CERO
+//   console.log(total);
+// }
+// countTotal(100, 20, 50, 40);
+//
+// Usando el DOM:
+// Tenemos un HTML con h1, 3xp, h2#result, h1#second
+// Seleccionamos
+// const p = document.querySelectorAll('p');
+// const result = document.querySelector('#result');
+// const second = document.querySelector('#second');
 
-// -------------------------->  NEW STRING METHODS  <----------------------------
+// console.log(p); // Vemos la NODE LIST
+// let newText = Array.from(p); // Transformamos la Node List en ARRAY!
+// console.log(newText); // Vemos el ARRAY
+
+// Long Way de agregar al DOM
+// newText = newText.map((item) => `<span>${item.textContent}</span>`).join(''); // Actualizamos la NewText, iterando los items y metiendo su contenido dentro de un span
+// result.innerHTML = newText; // La agregamos a RESULT
+// Shorter Way! --> Directo de la seleccion, sin alojar en Variable, creamos la Arrow Funct que itere sobre cada Item
+// const text = Array.from(document.querySelectorAll('p'), (item) => {
+//   console.log(item); // vemos cada item de la seleccion
+//   return `<span>${item.textContent}</span>`;
+// }).join('');
+// second.innerHTML = text; // Vemos el h1
+
+// -------------------------->  FIND, FINDINDEX, EVERY, SOME <----------------------------
+// Find: Specific Item || FindIndex: Index of Item || Every: every item in Array
+// Some: At least one item
+const people = [
+  { id: 1, name: 'Tom' },
+  { id: 2, name: 'Katy' },
+  { id: 3, name: 'Rafa' },
+];
+const grades = ['A', 'B', 'A', 'B', 'C'];
+const goodGrades = ['A', 'B', 'A', 'B'];
+
+// Lo que vimos Previamente: Se crea un Array RAFA, que contiene un filtro de PEOPLE, buscando cualquiera que name = Rafa
+// const rafa = people.filter((person) => person.name === 'Rafa');
+// console.log(rafa); // Vemos si hay Matches, serán alojados en un ARRAY RAFA
+// console.log(rafa[0].name); // Para poder ver las Keys del object (PEOPLE) deberemos ingresar por INDEX (ya que es un array)
+// console.log(rafa[0].id);
+//
+// ---> FIND: NO DEVUELVE ARRAY, SINO el Item (object) Dentro del ARRAY.
+// const Rafa = people.find((person) => person.name === 'Rafa');
+// console.log(Rafa); // Vemos el OBJECT con ID y Name
+// Si no hay Match = Undefined
+//
+// ---> FINDINDEX: Ejemplo: Remover el item de ID 3.
+// const toDelete = people.findIndex((item) => item.id === 3);
+// console.log(toDelete); // Vemos el INDEX para la persona de ID 3
+// Usaremos Slice Method
+// const newWithDeleted = people.slice(0, toDelete); // SLICE (de, Dejar FUera)
+// console.log(newWithDeleted); // Vemos el Nuevo Array con item deleteado
+//
+// ---> EVERY:
+// const allGoodGrades = grades.every((grade) => grade !== 'C'); // If grade NOT C all are good grades
+// console.log(allGoodGrades); // FALSE --> NO TODAS SON GOOD GRADES, HAY ALGUNA C
+// Pasamos la misma funcion pero en las GOOD GRADES:
+// const allGoodGrades2 = goodGrades.every((grade) => grade !== 'C');
+// console.log(allGoodGrades2); // TRUE --> ninguna C
+//
+// ---> SOME:
+// const oneBadGrade = grades.some((grade) => grade === 'C');
+// console.log(oneBadGrade); //TRUE: Alguna dentro de GRADES es C
