@@ -259,29 +259,89 @@
 // Gotcha --> ARROW Functions no pueden ser invokadas antes de ser declaradas, a diferencia de las Functions Regulares!
 
 // --------------------------> ARRAY DESTRUCTURING <----------------------------
-//
-//
-//
-//
+// Faster way to Access or Unpack values form Arrays
+// Objects into Variables
+// const fruits = ['orange', 'apple', 'pomme', 'banana'];
+// const friends = ['John', 'Tom', 'Katy', 'bobby', 'rafa'];
+// Regular Way:
+// const orange = fruits[0];
+// const banana = fruits[3];
+// const apple = fruits[1];
+// console.log(orange, banana, apple);
+// ES6 faster way:
+// const [index0, index1, index2] = friends; // Accedemos al Array por index. Pueden llamarse como querramos
+// console.log(index0, index1, index2); // Si nos pasamos del Length= Undefined
+// Si queremos Saltear algun item?
+// const [item1, , item3] = fruits; // Usamos commas para saltear Indexes
+// console.log(item1, item3); // Vemos que sealtea sin usar las commas
 
-// -------------------------->   <----------------------------
-//
-//
-//
-//
+// --------------------------> SWAP VARIABLES  <----------------------------
+// Queremos cambiar first por second y viceversa, como haciamos en Python
 
-// -------------------------->   <----------------------------
+// let first = 'bob';
+// let second = 'john';
+// Manera Regular:
+// let temp = second;
+// second = first;
+// first = temp;
+// console.log(first, second);
 //
-//
-//
-//
+// Manera ES6 (como Python):
+// [second, first] = [first, second];
+// console.log(first, second);
 
-// -------------------------->   <----------------------------
-//
-//
-//
-//
+// -------------------------->  OBJECT DESTRUCTURING  <----------------------------
+// const bob = {
+//   first: 'Bob',
+//   last: 'Sanders',
+//   city: 'Olivos',
+//   siblings: {
+//     sister: 'Jane',
+//   },
+// };
+// Manera Regular:
+// const firstName = bob.first;
+// const lastName = bob.last;
+// const sister = bob.siblings.sister;
+// console.log(firstName, lastName, sister);
+// ES6 Way:
+// const { last, first, city, zip } = bob; // Los Names pasados DEBEN EXISTIR EN EL OBJECT
+// console.log(last, first, city, zip); // ZIP undef
+// Si queremos pasar otros names para las KEYS : Usamos ALIAS (Key: alias)
+// const { first: nombre, last: apellido, city } = bob;
+// console.log(nombre, apellido, city); // Usamos ALIAS para invokar.
+// Cuando tenemos una property que es a su vez un Object?
+// const {
+//   first,
+//   last,
+//   siblings: { sister },
+// } = bob;
+// console.log(first, last, sister); // Accedemos con el Key dentro del Object as Property
 
+// --------------------------> DESTRUCTURING FUNCTION PARAMETERS  <----------------------------
+// const bob = {
+//   first: 'Bob',
+//   last: 'Sanders',
+//   city: 'Olivos',
+//   siblings: {
+//     sister: 'Jane',
+//   },
+// };
+// Imprimir values dentro de un Object, usando una Function
+// function printPerson(person) {
+// --> Manera normal:
+//   console.log(person.first, person.last);
+// --> Otra Manera
+//   const { first, last, city } = bob;
+//   console.log(first, last, city);
+// }
+// DESTRUCTURING: SE USA MUCHO EN REACT!!!!!!!!!!!!!!!!!!!!!
+// function printPersonDestruct({ first, last, city }) {
+//   console.log(first, last, city);
+// }
+// Invoke
+// printPerson(bob);
+// printPersonDestruct(bob);
 // -------------------------->   <----------------------------
 //
 //
