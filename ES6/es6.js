@@ -342,8 +342,126 @@
 // Invoke
 // printPerson(bob);
 // printPersonDestruct(bob);
-// -------------------------->   <----------------------------
+
+// -------------------------->  NEW STRING METHODS  <----------------------------
+// startsWith(), endsWith(), includes(), repeat(),
+// const person = 'Peter Smith';
+// const employee = '23456-EMP-PETER-SMITH';
+// const manager = '23456-MAN-JOHN-DOE';
+
+// console.log(person.startsWith('pet')); // CASE SENSITIVE
+// console.log(person.startsWith('Pet'));
+// console.log(employee.startsWith('EMP', 6)); // 6: Desde que caracter empezamos
 //
+// console.log(manager.endsWith('DOE'));
+// console.log(manager.endsWith('MAN', 9)); // A la inversa (N = caracter 9) y retrocede.
 //
+// console.log(employee.includes('SMI'));
 //
+// Usando Arrow Functions: Una function que imprime varias veces el parametro deseado.
+// Default = 3 times si nadie declara mas veces.
+// const multiplyPeople = (person, amount = 3) => person.repeat(amount);
+// const people = multiplyPeople(person, 10); // Imprimimos person 10 veces
+// console.log(people);
+
+// -------------------------->  FOR LOOPS  <----------------------------
+// Podemos iterar values de objetos iterables
+// const fruits = ['apple', 'pomme', 'banana', 'pera', 'manzana'];
+// const longName = 'Sir John Smith the Third of House Padilla';
+
+// Primero : Construir un Short name de uno Long
+// let shortName = '';
+// for (const letter of longName) {
+//   //   console.log(letter); // Vemos que imprime Letra por Letra
+//   if (letter === ' ') {
+//     // Si Letter es Espacio:
+//     continue; // Omitir y Continuar con el flow
+//   } else {
+//     shortName += letter; // agregar lo que NO SEA espacio a ShortName
+//   }
+// }
+// console.log(shortName); // Eliminamos los espacios
 //
+// Segundo: Arrays
+// for (const fruit of fruits) {
+//   if (fruit === 'banana') {
+//     // Si fruit es banana
+//     // break; // FRENAR EL LOOP y Salir.
+//     continue; // OMITIR Y CONTINUAR con el loop
+//   }
+//   console.log(fruit);
+// }
+
+// -------------------------->  SPREAD OPERATORS  <----------------------------
+// Allows an iterable to Spread or Expand individually inside the reciever.
+// Pocas palabras: Split into single items and copy them.
+// Primero: String
+// const udemy = 'Udemy';
+// const letters = [...udemy];
+// console.log(letters); // Array y cada letter es un Item
+// Segundo : Arrays y crear una Array flexible a partir de las que tenemos
+// const boys = ['John', 'Tom', 'Peter'];
+// const girls = ['Susan', 'Katy'];
+// const bestFriend = 'Arnold';
+//Normal Way:
+// const friends = [boys, girls, bestFriend]; // Sumamos todo dentro de una Array
+// console.log(friends); // Vemos el problema: Aloja las Array como objectos independientes (Array inside Array)
+// Splitting:
+// const friends2 = [...boys, ...girls, bestFriend];
+// console.log(friends2); // Vemos que todo se aloja en una misma Array, elementos independientes
+// Problem? If we re-assign a value inside friends 2, it will change FOREVER!
+// const newFriends = friends2;
+// newFriends[0] = 'La Katy';
+// console.log(newFriends); // NewFriends Tiene La Katy
+// console.log(friends2);// A partir de New Friends... Siempre tendremos La Katy
+// Solution: USING COPY! instead of Referencing Values
+// const newFriends = [...friends2]; // USAR ...
+// newFriends[0] = 'La Katy';
+// console.log(newFriends); // Usando ... SOLO CAMBIA EN NEWFRIENDS
+// console.log(friends2); // Queda igual que antes de La Katy
+//
+// IN ES8(2018) WE CAN USE THIS IN AN OBJECT!
+// const person = { name: 'Tom', job: 'Dev' };
+// const newPerson = { ...person, city: 'Chicago', name: 'Peter' }; // Agregamos new Key:Value, Modificamos Key:Value
+// console.log(newPerson); // Solo la NEW tiene la City, y Solo cambio el Name en NEW
+// console.log(person); // Person quedó inmutable
+//
+// SPREAD IN DOM ELEMENTS!
+// Ejemplo: SelectALL nos devuelve una NODE LIST, no podemos usar Array Methods (map, por ejemplo)ya que es una Node List , no un Array
+// HTML: unos H1 || Queremos convertirlos todos en H2 (H2 creado previamente con un ID: Result)
+// const headings = document.querySelectorAll('h1');
+// const result = document.querySelector('#result');
+// ---> ERROR: Vemos que no podemos usar MAP (en un NODE LIST)
+// console.log(headings.map((item) => console.log(item)));
+// --->CORRECT WAY: "[...]"
+// const text = [...headings]
+// console.log(text); // Vemos todos los H1 como array
+//   .map((item) => `<span>${item.textContent}</span>`) // MAP item, Para cada uno meteremos su Contenido dentro de una Span
+//   .join(''); // Y no queremos usar "," para separarlos (que sería su default). Usamos Espacio en Blanko
+// Ponemos esto en HTML
+// result.innerHTML = text; // vemos en el HTML que en el H2 metimos toda la lista generada
+//
+// FUNCTION ARGUMENTS!
+// Cuando tenemos una Funct que busca Individual Items, podemos Separar una Array en individual Items y poder correr la Function
+// Ejemplo:
+// console.log(Math.max(4, 5, 6, 7, 88));
+// Pero si tenemos dichos numbers en Array?
+// const numbers = [23, 45, 66, 88, 2000];
+// console.log(Math.max(numbers)); // NAN --> Not a Number
+// Solucion:
+// console.log(Math.max(...numbers)); // Spreads the Array into individual Numbers
+//
+// const john = ['John', 'Sanders'];
+// const sayHello = (name, lastName) => {
+//   console.log(`Hello ${name} ${lastName}`);
+// };
+// Manera Normal:
+// sayHello(john[0], john[1]);
+// Manera Optima:
+// sayHello(...john);
+
+// -------------------------->  REST OPERATOR  <----------------------------
+
+// -------------------------->  NEW STRING METHODS  <----------------------------
+
+// -------------------------->  NEW STRING METHODS  <----------------------------
