@@ -18,6 +18,9 @@ import { random, people } from './Utils/NamedExport.js';
 //
 // --> Default Export
 import whatever from './Utils/DefaultExport.js';
+//
+// --> Get Element
+import getE from './Utils/getElement.js';
 
 //
 // -----------------------> Setup <--------------------------
@@ -28,7 +31,7 @@ import whatever from './Utils/DefaultExport.js';
 //   { name: 'Katy', job: 'Design' },
 //   { name: 'Rafa', job: 'Boss' },
 // ];
-const container = document.querySelector('.container');
+// const container = document.querySelector('.container');
 const btn = document.querySelector('.btn');
 // Funcion - Nuevo Array = map de people. Imprimiendo cada Person -
 // const showPeople = () => {
@@ -57,8 +60,11 @@ btn.addEventListener('click', () => {
 // Import {random} from "path"
 //
 
-// -----------------------> <--------------------------
-//
+// -----------------------> GET ELEMENT <--------------------------
+// Supongamos que cometemos un error: CONTAINER1 NO EXISTE
+const container = getE('.container');
+const container1 = getE('.container1'); // --> NO SUCH ELEMENT
+console.log(container1); // ---> NULL
 //
 //
 
