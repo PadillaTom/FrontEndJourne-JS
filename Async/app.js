@@ -125,25 +125,25 @@
 // Pueden ser Pending, Resolved, Rejected
 // Ejemplo:
 // Restaurante --> Pagamos, esperamos, Recibimos Comida, Recibo.
-const heading1 = document.querySelector('.one');
-const heading2 = document.querySelector('.two');
-const heading3 = document.querySelector('.three');
-const btn = document.querySelector('.btn');
-btn.addEventListener('click', () => {
-  //
-});
+// const heading1 = document.querySelector('.one');
+// const heading2 = document.querySelector('.two');
+// const heading3 = document.querySelector('.three');
+// const btn = document.querySelector('.btn');
+// btn.addEventListener('click', () => {
+//
+// });
 //
 // PROMISE: Usamos NEW PROMISE y pasamos la cb function, que a su vez lleva 2 cb functions como parameters
 // Generalmente se usa; Resaolve and Reject
-const promise = new Promise((resolve, reject) => {
-  let value = true;
-  if (!value) {
-    // Probamos un True False para resolve, reject
-    resolve('Value is True, Resolved');
-  } else {
-    reject('Value False, Rejected');
-  }
-});
+// const promise = new Promise((resolve, reject) => {
+//   let value = true;
+//   if (!value) {
+//     // Probamos un True False para resolve, reject
+//     resolve('Value is True, Resolved');
+//   } else {
+//     reject('Value False, Rejected');
+//   }
+// });
 // console.log(promise.value); // Undef, no podemos acceder al Value.
 // Si queremos acceder: Tenemos que pasar la CB Function, con cualquier parametro que querramos
 // promise.then((taco) => console.log(taco));
@@ -151,9 +151,9 @@ const promise = new Promise((resolve, reject) => {
 // Si resolve ([1,2,3]) --> Devolvera un Array.
 //
 // What if: !Value ---> Nos dará un ERROR. necesitamos:
-promise
-  .then((taco) => console.log(taco))
-  .catch((pancho) => console.log(pancho));
+// promise
+//   .then((taco) => console.log(taco))
+//   .catch((pancho) => console.log(pancho));
 
 //
 // THEN ((PARAMETER) => LOG(PARAMETER)) --------> Si es Resolved
