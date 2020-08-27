@@ -21,4 +21,7 @@ export const people = [
 // import { random } from './Utils/data.js';
 // console.log(random);
 //
-//asd
+//
+// ::::::: DEFAULT EXPORT ::::::::::
+//
+// Pondremos una Function
