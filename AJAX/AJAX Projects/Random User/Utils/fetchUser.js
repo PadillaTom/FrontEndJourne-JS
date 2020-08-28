@@ -5,7 +5,7 @@ const getUser = async () => {
   const response = await fetch(URL);
   //   console.log(response); // Status 200
   const data = await response.json();
-  //   console.log(data); // Object que contiene RESULTS (Array) y lo que nos interesa es el index 0
+  // console.log(data); // Object que contiene RESULTS (Array) y lo que nos interesa es el index 0
   // DESTRUCTURE THE OBJECT:
   const person = data.results[0]; // Object Completo, vemos dentro y elegimos lo que queremos
   const { phone, email } = person;

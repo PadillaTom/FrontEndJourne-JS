@@ -15,14 +15,15 @@
 // *** Importamos
 import get from './Utils/getElement.js';
 import fetchUser from './Utils/fetchUser.js';
-// ---------->  Selections:
-// const URL = 'https://randomuser.me/api/';
-const img = get('.user-img');
-// console.log(img); // Vemos que funciona
-const title = get('.user-title');
-const value = get('.user-value');
+import displayUser from './Utils/displayUser.js';
+// // ---------->  Selections:
+// // const URL = 'https://randomuser.me/api/';
+// const img = get('.user-img');
+// // console.log(img); // Vemos que funciona
+// const title = get('.user-title');
+// const value = get('.user-value');
 const btn = get('.btn');
-const btns = [...document.querySelectorAll('.icon')]; // Transofmra NodeList en Array
+// const btns = [...document.querySelectorAll('.icon')]; // Transofmra NodeList en Array
 // console.log(btns);// Vemos el Array
 //
 // ----------> Functionality:
@@ -31,7 +32,7 @@ const btns = [...document.querySelectorAll('.icon')]; // Transofmra NodeList en 
 // Funcionalidad BTNS
 //
 
-// Get user from API:
+// Get user from API: ---------> Module: FetchUser <-------------------
 // Al ser ASYNC it is returning a Promise by default.
 // Luego en ShowUSer usaremos ASYNC as well con su await.
 // const getUser = async () => {
@@ -62,14 +63,43 @@ const btns = [...document.querySelectorAll('.icon')]; // Transofmra NodeList en 
 //   };
 // };
 
+// --------------> Display User <--------------
+// Pasamos PERSON: a quien le tomaremos el KEY deseado.
+// const displayUser = (person) => {
+//Image:
+// img.src = person.image;
+// value.textContent = person.name;
+// title.textContent = `My name is:`; // En caso de haber olvidado pasarlo como Template Literal previamente
+// btns.forEach((btn) => {
+// Removemos ACTIVE
+// btn.classList.remove('active');
+// });
+// btns[0].classList.add('active'); // Damos ACTIVE al Primer BTN por default
+// Funcionalidad BTNS
+// btns.forEach((btn) => {
+// console.log(btn); // Vemos los BTNS
+// const label = btn.dataset.label; // Juntamos la data: Label para meterla dynamicamente
+// btn.addEventListener('click', () => {
+// console.log(person[label]); // Vemos lo que nos da cada BTN
+//       title.textContent = `My ${label} is: `;
+//       value.textContent = person[label];
+//       btns.forEach((btn) => {
+//         btn.classList.remove('active');
+//       });
+//       btn.classList.add('active');
+//     });
+//   });
+// };
+
 // ----> MAIN FUNCTION:
 // Cuando queremos mostrar esta func? Window Load and Click BTN
 const showUser = async () => {
   //   console.log('Hello World'); // Vemos Que los Events funcionan
   // Get User from API: Al ser ASYNC -->
   const person = await fetchUser();
-  console.log(person); // Vemos los datos, en formato OBJECT
+  // console.log(person); // Vemos los datos, en formato OBJECT
   // Display User
+  displayUser(person);
 };
 window.addEventListener('DOMContentLoaded', showUser);
 btn.addEventListener('click', showUser);
