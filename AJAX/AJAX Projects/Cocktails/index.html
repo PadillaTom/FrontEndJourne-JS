@@ -14,7 +14,32 @@
   </head>
 
   <body>
-    <h1>drinks page</h1>
+    <!-- Form -->
+    <form class="search-form">
+      <h2>Cocktails API</h2>
+      <input type="text" placeholder="Search a Cocktail" name="drink" />
+    </form>
+    <!-- Section -->
+    <section class="section cocktails">
+      <article class="loading hide-loading">
+        <img src="./loading.gif" alt="Loading" />
+      </article>
+      <h2 class="title">Error Message or cocktails</h2>
+      <!-- Main -->
+      <div class="section-center">
+        <!-- single Drink -->
+        <a href="./drink.html">
+          <article class="cocktail" data-id="1">
+            <img src="./cocktail.jpg" alt="concktail" />
+            <h3>Martini</h3>
+          </article>
+        </a>
+        <!-- End Single Drink -->
+      </div>
+    </section>
+
+    <!-- JS -->
     <script type="module" src="./app.js"></script>
+    <script src="./singleDrink.js"></script>
   </body>
 </html>
