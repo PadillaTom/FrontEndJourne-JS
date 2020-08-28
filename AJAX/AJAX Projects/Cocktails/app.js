@@ -1,5 +1,5 @@
 // ********* Imports
-import get from './Utils/getElement.js';
+import getElement from './Utils/getElement.js';
 import presentDrinks from './Utils/presentDrinks.js';
 
 // ********* URL

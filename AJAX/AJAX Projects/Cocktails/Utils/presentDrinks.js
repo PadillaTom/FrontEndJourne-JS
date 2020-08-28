@@ -14,7 +14,7 @@ const showDrinks = async (url) => {
   //
   // ---> Fetch Drink from API
   const data = await fetchDrinks(url);
-  console.log(data);
+  //   console.log(data); //--> De aqui Sacaremos un ARRAY
   // ---> Display Drink from API
   const section = await displayDrinks(data);
   console.log(section); // Comprobamos
