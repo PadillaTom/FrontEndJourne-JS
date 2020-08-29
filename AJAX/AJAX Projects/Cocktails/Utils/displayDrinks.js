@@ -3,6 +3,7 @@
 //
 // ***** Imports:
 import getElement from './getElement.js';
+import { hideLoading } from './toggleLoading.js';
 //
 
 // Get me the DRINKS property form the DATA Object
@@ -10,11 +11,13 @@ const displayDrinks = ({ drinks }) => {
   // ---> Comprobamos
   //   console.log(drinks); // Comprobamos el Array sacado de DATA
   //   return 1; // Comprobamos el Modulo
+
   // ---> Selecciones:
   const section = getElement('.section-center');
   const title = getElement('.title');
   // ---> Funcionalidad:
   if (!drinks) {
+    hideLoading();
     // NO ENCUENTRA DRINK
     title.textContent = `No such Drinks`; // Texto
     section.innerHTML = null; // Cancelamos las Imagenes
@@ -35,6 +38,7 @@ const displayDrinks = ({ drinks }) => {
     })
     .join(''); // Sacamos las COMMAS
   // ---> Hide Loading:
+  hideLoading();
   title.textContent = ''; // Escondemos Title
   section.innerHTML = newDrinks;
   return section; // Vemos que la Section sea la Correcta

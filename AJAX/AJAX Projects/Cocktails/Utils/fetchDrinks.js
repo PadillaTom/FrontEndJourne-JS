@@ -1,8 +1,11 @@
 // ::::::::: Fetch Drinks
 //
-
+// Import Loading GIF:
+import { showLoading } from './toggleLoading.js';
 //
 const fetchDrinks = async (url) => {
+  // Mostramos Loading: y sacaremos when DISPLAY
+  showLoading();
   //   return 1; // Para Comprobar
   try {
     // SI encuentra:
