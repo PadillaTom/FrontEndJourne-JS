@@ -5,6 +5,7 @@
 // **** Imports
 import fetchDrinks from './fetchDrinks.js';
 import displayDrinks from './displayDrinks.js';
+import setDrink from './setDrink.js';
 //
 const showDrinks = async (url) => {
   // ---> Comprobar los Modulos
@@ -17,7 +18,10 @@ const showDrinks = async (url) => {
   //   console.log(data); //--> De aqui Sacaremos un ARRAY
   // ---> Display Drink from API
   const section = await displayDrinks(data);
-  console.log(section); // Comprobamos
+  // console.log(section); // Comprobamos
+  if (section) {
+    setDrink(section);
+  }
 };
 
 // Export Default
